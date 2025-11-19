@@ -9,6 +9,7 @@ function App() {
         <h1>Magical Minis</h1>
         <p>Welcome to magicalminishop.com by Maia and Allie Morello</p>
       </header>
+      <main></main>
     </div>
   )
 }
