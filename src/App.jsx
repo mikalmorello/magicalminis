@@ -1,16 +1,38 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import './App.css'
-import jackBackground from './assets/jack_website-background.png'
+import Home from './pages/Home'
+import Designers from './pages/Designers'
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
+  const closeMenu = () => {
+    setIsMenuOpen(false)
+  }
+
   return (
-    <div className="App" style={{ '--bg-image': `url(${jackBackground})` }}>
-      <header className="App-header">
-        <h1>Magical Minis</h1>
-        <p>Welcome to magicalminishop.com by Maia and Allie Morello</p>
-      </header>
-      <main></main>
-    </div>
+    <BrowserRouter>
+      <nav className="navbar">
+        <button className="hamburger" onClick={toggleMenu} aria-label="Toggle menu">
+          <span className={isMenuOpen ? 'hamburger-line open' : 'hamburger-line'}></span>
+          <span className={isMenuOpen ? 'hamburger-line open' : 'hamburger-line'}></span>
+          <span className={isMenuOpen ? 'hamburger-line open' : 'hamburger-line'}></span>
+        </button>
+        <div className={`nav-menu ${isMenuOpen ? 'nav-menu-open' : ''}`}>
+          <Link to="/" onClick={closeMenu} className="nav-link">Home</Link>
+          <Link to="/designers" onClick={closeMenu} className="nav-link">Designers</Link>
+        </div>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/designers" element={<Designers />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
