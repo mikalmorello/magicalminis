@@ -2,8 +2,8 @@
   width: 100%;
   min-height: 100vh;
   background-color: var(--sky-top);
-}
 
-.home__hero-wrap {
-  position: relative;
+  &__hero-wrap {
+    position: relative;
+  }
 }

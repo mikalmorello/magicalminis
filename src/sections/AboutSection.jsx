@@ -1,4 +1,4 @@
-import './sections.css'
+import './sections.scss'
 
 const TEAM = [
   { name: 'artsy allie', id: 'allie' },

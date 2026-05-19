@@ -1,4 +1,4 @@
-import './sections.css'
+import './sections.scss'
 
 const PRODUCTS = [
   { name: 'mini easel', price: '3.99', isNew: true },

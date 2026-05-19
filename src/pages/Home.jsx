@@ -4,7 +4,7 @@ import SiteHeader from '../components/layout/SiteHeader'
 import HeroScene from '../components/hero/HeroScene'
 import AboutSection from '../sections/AboutSection'
 import ProductSection from '../sections/ProductSection'
-import './home.css'
+import './home.scss'
 
 function Home() {
   const { hash } = useLocation()

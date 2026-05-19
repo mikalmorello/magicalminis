@@ -2,7 +2,7 @@ import SkyBackground from './SkyBackground'
 import Cloud from './Cloud'
 import Rainbow from './Rainbow'
 import WaveDivider from './WaveDivider'
-import './hero.css'
+import './hero.scss'
 
 const CLOUDS = [
   { className: 'cloud--1', style: { '--drift-x': '20px', '--drift-y': '-8px', '--drift-speed': '32s', '--cloud-scale': '0.7', top: '12%', left: '5%' } },

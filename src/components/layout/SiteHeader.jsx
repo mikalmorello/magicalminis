@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import './SiteHeader.css'
+import './SiteHeader.scss'
 
 function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
