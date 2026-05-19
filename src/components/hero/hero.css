@@ -1,13 +1,17 @@
 .hero-scene {
   position: relative;
   width: 100%;
-  min-height: var(--hero-min-height);
+  min-height: calc(var(--hero-min-height) + var(--header-height));
+  padding-top: var(--header-height);
   overflow: hidden;
 }
 
 .sky {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: var(--z-sky);
   background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 100%);
 }
