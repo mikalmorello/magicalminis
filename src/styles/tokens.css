@@ -1,0 +1,60 @@
+:root {
+  /* Sky */
+  --sky-top: #f5d4e8;
+  --sky-bottom: #f0b8d4;
+
+  /* Sea */
+  --sea-front: #5ec4c4;
+  --sea-back: #4ab3b3;
+  --sea-deep: #3da8a8;
+
+  /* Beach */
+  --beach-light: #f5e6c8;
+  --beach-mid: #e8d4a8;
+  --beach-dark: #d4bc8a;
+
+  /* Rainbow bands (outer → inner) */
+  --rainbow-1: #c9a0e8;
+  --rainbow-2: #a8d8f0;
+  --rainbow-3: #a8e8c8;
+  --rainbow-4: #f5e8a8;
+  --rainbow-5: #f5c8d8;
+  --rainbow-6: #f8d0e0;
+
+  /* Brand */
+  --pink-primary: #e878a0;
+  --pink-dark: #d06088;
+  --pink-light: #f5a8c0;
+  --teal-text: #2a8a8a;
+  --teal-heading: #3a9a9a;
+
+  /* Neutrals */
+  --white: #ffffff;
+  --text-dark: #2a4a4a;
+
+  /* Typography */
+  --font-display: 'Fredoka', cursive, sans-serif;
+  --font-body: 'Comfortaa', cursive, sans-serif;
+
+  /* Animation defaults (override on hover via parent) */
+  --cloud-drift-duration: 28s;
+  --drift-speed: var(--cloud-drift-duration);
+  --wave-scroll-duration-back: 18s;
+  --wave-scroll-duration-front: 12s;
+  --wave-speed: var(--wave-scroll-duration-front);
+  --rainbow-glow-duration: 6s;
+
+  /* Layout */
+  --hero-min-height: 58vh;
+  --header-height: 4.5rem;
+  --section-padding: 2rem;
+  --max-content-width: 1200px;
+
+  /* Z-index stack */
+  --z-sky: 0;
+  --z-cloud: 1;
+  --z-rainbow: 2;
+  --z-waves: 3;
+  --z-header: 10;
+  --z-nav-menu: 11;
+}

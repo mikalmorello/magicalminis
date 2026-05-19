@@ -1,40 +1,16 @@
-import { useState } from 'react'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
-import Designers from './pages/Designers'
+import './App.css'
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
-  const closeMenu = () => {
-    setIsMenuOpen(false)
-  }
-
   return (
     <BrowserRouter>
-      <nav className="navbar">
-        <button className="hamburger" onClick={toggleMenu} aria-label="Toggle menu">
-          <span className={isMenuOpen ? 'hamburger-line open' : 'hamburger-line'}></span>
-          <span className={isMenuOpen ? 'hamburger-line open' : 'hamburger-line'}></span>
-          <span className={isMenuOpen ? 'hamburger-line open' : 'hamburger-line'}></span>
-        </button>
-        <div className={`nav-menu ${isMenuOpen ? 'nav-menu-open' : ''}`}>
-          <Link to="/" onClick={closeMenu} className="nav-link">Home</Link>
-          <Link to="/designers" onClick={closeMenu} className="nav-link">Designers</Link>
-        </div>
-      </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/designers" element={<Designers />} />
+        <Route path="/designers" element={<Navigate to="/#team" replace />} />
       </Routes>
     </BrowserRouter>
   )
 }
 
 export default App
-

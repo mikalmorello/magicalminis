@@ -1,0 +1,38 @@
+@keyframes cloudDrift {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(var(--drift-x, 24px)) translateY(var(--drift-y, -6px));
+  }
+}
+
+@keyframes rainbowGlow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.95;
+  }
+}
+
+@keyframes waveScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animate='drift'],
+  [data-animate='glow'],
+  [data-animate='scroll'] {
+    animation: none !important;
+  }
+}
