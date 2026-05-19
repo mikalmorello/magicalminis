@@ -97,37 +97,47 @@
   left: 0;
   right: 0;
   z-index: var(--z-rainbow);
-  width: min(90vw, 520px);
-  height: min(45vw, 260px);
+  width: min(92vw, 580px);
   margin-inline: auto;
   pointer-events: auto;
+  line-height: 0;
 
   @media (max-width: 600px) {
-    width: min(95vw, 380px);
-    height: min(50vw, 200px);
+    width: min(96vw, 420px);
   }
 
-  &:hover .rainbow__arc {
-    filter: brightness(1.08);
-  }
-
-  &__inner {
-    position: relative;
+  &__svg {
+    display: block;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    height: auto;
+    aspect-ratio: 1158 / 599;
+    overflow: visible;
+  }
+
+  &__group {
+    opacity: 0.5;
+  }
+
+  &__band {
+    cursor: pointer;
+    pointer-events: visiblePainted;
     transform-origin: center bottom;
     animation: rainbowGlow var(--rainbow-glow-duration) ease-in-out infinite;
+    animation-delay: calc(var(--band-index, 1) * 0.15s);
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      --rainbow-glow-duration: 3s;
+      opacity: 1;
+
+      .rainbow__arc {
+        filter: brightness(1.12);
+      }
+    }
   }
 
   &__arc {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin-inline: auto;
-    background: var(--arc-color);
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    pointer-events: inherit;
     transition: filter 0.3s ease;
   }
 }
