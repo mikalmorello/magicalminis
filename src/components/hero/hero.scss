@@ -13,7 +13,7 @@
   background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 100%);
 }
 
-.hero-scene__decor {
+.hero-scene__clouds {
   position: absolute;
   inset: 0;
   z-index: var(--z-cloud);
@@ -37,7 +37,7 @@
     animation: cloudDrift var(--drift-speed, var(--cloud-drift-duration)) ease-in-out infinite;
 
     @media (max-width: 600px) {
-      --cloud-scale: calc(var(--cloud-scale, 1) * 0.85);
+      --cloud-scale: calc(var(--cloud-scale, 1) * 0.9);
     }
   }
 
@@ -48,40 +48,40 @@
     opacity: 0.95;
 
     &--1 {
-      width: 55px;
-      height: 55px;
+      width: 74px;
+      height: 74px;
       bottom: 0;
       left: 0;
     }
 
     &--2 {
-      width: 70px;
-      height: 70px;
-      bottom: 5px;
-      left: 35px;
+      width: 93px;
+      height: 93px;
+      bottom: 6px;
+      left: 47px;
       opacity: 1;
     }
 
     &--3 {
-      width: 60px;
-      height: 60px;
+      width: 80px;
+      height: 80px;
       bottom: 0;
-      left: 72px;
+      left: 96px;
     }
 
     &--4 {
-      width: 45px;
-      height: 45px;
-      bottom: 10px;
-      left: 102px;
+      width: 60px;
+      height: 60px;
+      bottom: 12px;
+      left: 136px;
       opacity: 0.9;
     }
 
     &--5 {
-      width: 35px;
-      height: 35px;
-      bottom: 15px;
-      left: 18px;
+      width: 47px;
+      height: 47px;
+      bottom: 18px;
+      left: 24px;
       opacity: 0.85;
     }
   }
