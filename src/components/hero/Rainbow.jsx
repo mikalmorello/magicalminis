@@ -74,6 +74,10 @@ function Rainbow() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
+          <linearGradient id="rainbow-sky-bg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="var(--sky-top)" />
+            <stop offset="100%" stopColor="var(--sky-bottom)" />
+          </linearGradient>
           {SHADOWS.map((shadow) => (
             <filter
               key={shadow.id}
@@ -95,6 +99,11 @@ function Rainbow() {
             </filter>
           ))}
         </defs>
+        <g className="rainbow__backdrop" aria-hidden="true">
+          {BANDS.map((band) => (
+            <path key={`bg-${band.index}`} d={band.d} fill="url(#rainbow-sky-bg)" />
+          ))}
+        </g>
         <g className="rainbow__group">
           {BANDS.map((band) => (
             <g

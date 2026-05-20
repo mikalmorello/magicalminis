@@ -110,6 +110,10 @@
     overflow: visible;
   }
 
+  &__backdrop {
+    pointer-events: none;
+  }
+
   &__group {
     opacity: 0.5;
   }
