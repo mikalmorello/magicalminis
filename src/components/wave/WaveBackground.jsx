@@ -22,20 +22,30 @@ const WAVE_PATHS = [
   'M0,130 C24,120 48,120 72,130 C96,140 120,140 144,130 C168,120 192,120 216,130 C240,140 264,140 288,130 C312,120 336,120 360,130 C384,140 408,140 432,130 C456,120 480,120 504,130 C528,140 552,140 576,130 C600,120 624,120 648,130 C672,140 696,140 720,130 C744,120 768,120 792,130 C816,140 840,140 864,130 C888,120 912,120 936,130 C960,140 984,140 1008,130 C1032,120 1056,120 1080,130 C1104,140 1128,140 1152,130 C1176,120 1200,120 1224,130 C1248,140 1272,140 1296,130 C1320,120 1344,120 1368,130 C1392,140 1416,140 1440,130 L1440,180 L0,180 Z',
 ]
 
+function WaveSvg({ path }) {
+  return (
+    <svg
+      className="wave-bg__svg"
+      viewBox="0 0 1440 180"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d={path} />
+    </svg>
+  )
+}
+
 function WaveLayer({ index, path }) {
   return (
     <div
       className={`wave-bg__layer wave-bg__layer--${index}`}
       aria-hidden="true"
     >
-      <svg
-        className="wave-bg__svg"
-        viewBox="0 0 1440 180"
-        preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d={path} />
-      </svg>
+      <div className="wave-bg__track" data-animate="scroll">
+        <WaveSvg path={path} />
+        <WaveSvg path={path} />
+      </div>
     </div>
   )
 }

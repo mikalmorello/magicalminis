@@ -22,12 +22,15 @@
 .wave-bg__layer {
   position: absolute;
   inset: 0;
+  overflow: hidden; /* hide the off-screen copy of the scrolling track */
 
   /* Layer indexes go top-of-strip → bottom-of-strip; z-order goes the
      other way so the lowest wave (the water itself) paints on top of
-     the foam bands, and each higher wave reveals as a thin stripe. */
+     the foam bands, and each higher wave reveals as a thin stripe.
+     Per-layer scroll speeds give subtle parallax. */
   &--1 {
     z-index: 1;
+    --wave-speed: var(--wave-speed-1, 24s);
 
     .wave-bg__svg path {
       fill: var(--wave-1, #84d4e4);
@@ -36,6 +39,7 @@
 
   &--2 {
     z-index: 2;
+    --wave-speed: var(--wave-speed-2, 32s);
 
     .wave-bg__svg path {
       fill: var(--wave-2, #78cbd6);
@@ -44,6 +48,7 @@
 
   &--3 {
     z-index: 3;
+    --wave-speed: var(--wave-speed-3, 40s);
 
     .wave-bg__svg path {
       fill: var(--wave-3, #71c7d3);
@@ -51,10 +56,21 @@
   }
 }
 
-.wave-bg__svg {
-  display: block;
-  width: 100%;
+/* Track holds two side-by-side copies of the SVG. Translating it
+   -50% slides the first copy off-screen as the second comes in from
+   the right, creating a seamless loop. */
+.wave-bg__track {
+  display: flex;
+  width: 200%;
   height: 100%;
+  animation: waveScroll var(--wave-speed, 30s) linear infinite;
+}
+
+.wave-bg__svg {
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  display: block;
 }
 
 @media (max-width: 600px) {

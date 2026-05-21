@@ -51,9 +51,9 @@
   /* Animation defaults */
   --cloud-drift-duration: 28s;
   --drift-speed: var(--cloud-drift-duration);
-  --wave-scroll-duration-back: 18s;
-  --wave-scroll-duration-front: 12s;
-  --wave-speed: var(--wave-scroll-duration-front);
+  --wave-speed-1: 96s;    /* top foam band (fastest) */
+  --wave-speed-2: 128s;   /* middle foam band */
+  --wave-speed-3: 160s;   /* water body (slowest) */
   --rainbow-glow-duration: 6s;
 
   /* Layout */

@@ -27,10 +27,19 @@
   }
 }
 
+/*
+  Honor the user's OS-level motion preference. Disables every CSS
+  animation and transition, and turns off smooth scrolling, no matter
+  whether the animated element opted in via [data-animate]. This is the
+  defacto industry pattern and protects future animations too.
+*/
 @media (prefers-reduced-motion: reduce) {
-  [data-animate='drift'],
-  [data-animate='glow'],
-  [data-animate='scroll'] {
-    animation: none !important;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
