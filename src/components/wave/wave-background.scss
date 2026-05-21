@@ -14,7 +14,7 @@
   top: calc(var(--wave-overlap, 80px) * -1);
   left: 0;
   right: 0;
-  height: var(--wave-strip-height, 120px);
+  height: var(--wave-strip-height, 180px);
   pointer-events: none;
   z-index: var(--z-waves);
 }
@@ -59,6 +59,6 @@
 
 @media (max-width: 600px) {
   .wave-bg {
-    --wave-strip-height: 90px;
+    --wave-strip-height: 135px;
   }
 }
