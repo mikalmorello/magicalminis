@@ -1,3 +1,4 @@
+import WaveBackground from '../components/wave/WaveBackground'
 import './sections.scss'
 
 const TEAM = [
@@ -9,6 +10,7 @@ const TEAM = [
 function AboutSection() {
   return (
     <section className="about-section" id="about" aria-labelledby="about-heading">
+      <WaveBackground />
       <div className="about-section__inner">
         <div className="about-section__copy">
           <h2 id="about-heading" className="about-section__heading">

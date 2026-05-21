@@ -1,7 +1,6 @@
 import SkyBackground from './SkyBackground'
 import Cloud from './Cloud'
 import Rainbow from './Rainbow'
-import WaveDivider from './WaveDivider'
 import './hero.scss'
 
 const CLOUDS = [
@@ -23,7 +22,6 @@ function HeroScene() {
         ))}
       </div>
       <Rainbow />
-      <WaveDivider />
     </section>
   )
 }

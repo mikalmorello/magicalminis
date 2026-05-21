@@ -1,0 +1,62 @@
+/*
+  Decorative wave divider. Place inside a `position: relative` section
+  whose background is `--wave-fill`. All three layers share the same
+  vertical strip; the visual differentiation comes from their SVG paths
+  (each layer's wave is offset downward from the previous one). Each
+  path fills the area ABOVE its wave, so:
+    layer 1 (pink)        — the sky extending down with a wavy bottom
+    layer 2 (light teal)  — foam band between wave 1 and wave 2
+    layer 3 (medium teal) — foam band between wave 2 and wave 3
+    section bg            — solid water below wave 3
+*/
+.wave-bg {
+  position: absolute;
+  top: calc(var(--wave-overlap, 30px) * -1);
+  left: 0;
+  right: 0;
+  height: var(--wave-strip-height, 80px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wave-bg__layer {
+  position: absolute;
+  inset: 0;
+
+  &--1 {
+    z-index: 3;
+
+    .wave-bg__svg path {
+      fill: var(--wave-1, #f7d7ec);
+    }
+  }
+
+  &--2 {
+    z-index: 2;
+
+    .wave-bg__svg path {
+      fill: var(--wave-2, #cfeef4);
+    }
+  }
+
+  &--3 {
+    z-index: 1;
+
+    .wave-bg__svg path {
+      fill: var(--wave-3, #8fd6e4);
+    }
+  }
+}
+
+.wave-bg__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 600px) {
+  .wave-bg {
+    --wave-strip-height: 75px;
+    --wave-overlap: 22px;
+  }
+}

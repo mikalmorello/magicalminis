@@ -8,6 +8,16 @@
   --sea-back: #4ab3b3;
   --sea-deep: #3da8a8;
 
+  /* Wave divider palette — top → bottom, last value is the section fill */
+  --wave-1: #f7d7ec;
+  --wave-2: #cfeef4;
+  --wave-3: #8fd6e4;
+  --wave-fill: #79cddb;
+
+  /* Wave divider geometry */
+  --wave-strip-height: 100px;
+  --wave-overlap: 30px; /* how far the wave reaches above the section */
+
   /* Beach */
   --beach-light: #f5e6c8;
   --beach-mid: #e8d4a8;

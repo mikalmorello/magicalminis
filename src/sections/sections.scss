@@ -1,9 +1,12 @@
 .about-section {
-  background: var(--sea-deep);
-  padding: 3rem var(--section-padding) 4rem;
+  position: relative;
+  background: var(--wave-fill);
+  padding: calc(var(--wave-strip-height) + 2rem) var(--section-padding) 4rem;
   margin-top: -1px;
 
   &__inner {
+    position: relative;
+    z-index: 2;
     max-width: var(--max-content-width);
     margin: 0 auto;
     display: grid;
