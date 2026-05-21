@@ -8,15 +8,16 @@
   --sea-back: #4ab3b3;
   --sea-deep: #3da8a8;
 
-  /* Wave divider palette — top → bottom, last value is the section fill */
-  --wave-1: #f7d7ec;
-  --wave-2: #cfeef4;
-  --wave-3: #8fd6e4;
-  --wave-fill: #79cddb;
+  /* Wave divider palette — top of wave → water. Anything above wave-1
+     is transparent so the hero/rainbow shows through. */
+  --wave-1: #8ed8d8;             /* topmost foam band */
+  --wave-2: var(--sea-front);    /* middle foam band */
+  --wave-3: var(--sea-back);     /* water (matches --wave-fill below) */
+  --wave-fill: var(--sea-back);  /* section background — same as wave-3 for seamless seam */
 
   /* Wave divider geometry */
-  --wave-strip-height: 100px;
-  --wave-overlap: 30px; /* how far the wave reaches above the section */
+  --wave-strip-height: 120px;
+  --wave-overlap: 80px;          /* how far the wave divider reaches up into the hero */
 
   /* Beach */
   --beach-light: #f5e6c8;

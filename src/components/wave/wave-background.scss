@@ -11,23 +11,26 @@
 */
 .wave-bg {
   position: absolute;
-  top: calc(var(--wave-overlap, 30px) * -1);
+  top: calc(var(--wave-overlap, 80px) * -1);
   left: 0;
   right: 0;
-  height: var(--wave-strip-height, 80px);
+  height: var(--wave-strip-height, 120px);
   pointer-events: none;
-  z-index: 1;
+  z-index: var(--z-waves);
 }
 
 .wave-bg__layer {
   position: absolute;
   inset: 0;
 
+  /* Layer indexes go top-of-strip → bottom-of-strip; z-order goes the
+     other way so the lowest wave (the water itself) paints on top of
+     the foam bands, and each higher wave reveals as a thin stripe. */
   &--1 {
-    z-index: 3;
+    z-index: 1;
 
     .wave-bg__svg path {
-      fill: var(--wave-1, #f7d7ec);
+      fill: var(--wave-1, #8ed8d8);
     }
   }
 
@@ -35,15 +38,15 @@
     z-index: 2;
 
     .wave-bg__svg path {
-      fill: var(--wave-2, #cfeef4);
+      fill: var(--wave-2, #5ec4c4);
     }
   }
 
   &--3 {
-    z-index: 1;
+    z-index: 3;
 
     .wave-bg__svg path {
-      fill: var(--wave-3, #8fd6e4);
+      fill: var(--wave-3, #4ab3b3);
     }
   }
 }
@@ -56,7 +59,6 @@
 
 @media (max-width: 600px) {
   .wave-bg {
-    --wave-strip-height: 75px;
-    --wave-overlap: 22px;
+    --wave-strip-height: 90px;
   }
 }
