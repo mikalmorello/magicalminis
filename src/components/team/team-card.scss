@@ -1,0 +1,68 @@
+/*
+  Team card — matches the `artsy allie` mockup.
+
+  - Tombstone shape: heavily-rounded top arch, gently-rounded bottom
+  - One uniform pink background (no separate name stripe)
+  - Circular photo in the upper region
+  - Purple display-font name centered at the bottom
+  - Decorations (SVG stars) overlay the right-middle of the photo
+*/
+.team-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: clamp(160px, 22vw, 210px);
+  background: var(--team-card-bg);
+  border-radius: 48% 48% 16px 16px / 32% 32% 16px 16px;
+  box-shadow: var(--team-card-shadow);
+  padding: clamp(0.85rem, 1.6vw, 1.1rem);
+  padding-bottom: clamp(0.9rem, 1.8vw, 1.2rem);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 32px rgba(176, 70, 110, 0.22);
+  }
+
+  &__media {
+    position: relative;
+    width: 100%;
+  }
+
+  &__photo {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: linear-gradient(
+      135deg,
+      var(--team-card-photo-placeholder-start) 0%,
+      var(--team-card-photo-placeholder-end) 100%
+    );
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__decor {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &__decoration {
+    position: absolute;
+    /* size + top/right come from inline styles set per decoration */
+  }
+
+  &__name {
+    display: block;
+    text-align: center;
+    margin-top: clamp(0.5rem, 1.2vw, 0.85rem);
+    font-family: var(--font-display);
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    font-weight: 600;
+    color: var(--team-card-name-color);
+    letter-spacing: 0.005em;
+  }
+}

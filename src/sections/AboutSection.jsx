@@ -1,10 +1,60 @@
 import WaveBackground from '../components/wave/WaveBackground'
+import TeamCard from '../components/team/TeamCard'
+import alliePhoto from '../assets/team/allie.png'
+import jackPhoto from '../assets/team/jack.png'
+import maiaPhoto from '../assets/team/maia.png'
 import './sections.scss'
 
+/*
+  Per-card data lifted straight from the design:
+    - allie  light-pink card, lavender/pink/purple stars on right, purple name
+    - jack   coral card, pink halo above the dog's head, white name
+    - maia   light-pink card, pink + lavender hearts on right, deep-pink name
+
+  Each card overrides --team-card-bg and --team-card-name-color via inline
+  CSS variables; the rest of the card geometry comes from team-card.scss.
+*/
 const TEAM = [
-  { name: 'artsy allie', id: 'allie' },
-  { name: 'Juxtapose jack', id: 'jack' },
-  { name: 'magical maia', id: 'maia' },
+  {
+    id: 'allie',
+    name: 'artsy allie',
+    photo: alliePhoto,
+    style: {
+      '--team-card-bg': '#f3c8d8',
+      '--team-card-name-color': '#aa6db8',
+    },
+    decorations: [
+      { shape: 'star', color: 'var(--star-lavender)', top: '30%', right: '-2%', size: 28 },
+      { shape: 'star', color: 'var(--star-pink)', top: '46%', right: '-6%', size: 22 },
+      { shape: 'star', color: 'var(--star-purple)', top: '62%', right: '-2%', size: 28 },
+    ],
+  },
+  {
+    id: 'jack',
+    name: 'Juxtapose jack',
+    photo: jackPhoto,
+    style: {
+      '--team-card-bg': '#ed94a5',
+      '--team-card-name-color': '#ffffff',
+    },
+    decorations: [
+      { shape: 'halo', color: '#f3c8d8', top: '-2%', left: '20%', size: 110, rotate: '-12deg' },
+    ],
+  },
+  {
+    id: 'maia',
+    name: 'magical maia',
+    photo: maiaPhoto,
+    style: {
+      '--team-card-bg': '#f3c8d8',
+      '--team-card-name-color': '#d06088',
+    },
+    decorations: [
+      { shape: 'heart', color: '#f5a8c0', top: '32%', right: '-2%', size: 30 },
+      { shape: 'heart', color: '#f3c8d8', top: '50%', right: '-7%', size: 22 },
+      { shape: 'heart', color: '#d2bce0', top: '60%', right: '3%', size: 24 },
+    ],
+  },
 ]
 
 function AboutSection() {
@@ -27,12 +77,13 @@ function AboutSection() {
           <div className="about-section__ribbon">Meet the design team</div>
           <div className="about-section__cards">
             {TEAM.map((member) => (
-              <article key={member.id} className="team-card">
-                <div className="team-card__frame">
-                  <div className="team-card__photo" aria-label={`Photo of ${member.name}`} />
-                </div>
-                <p className="team-card__name">{member.name}</p>
-              </article>
+              <TeamCard
+                key={member.id}
+                name={member.name}
+                photo={member.photo}
+                decorations={member.decorations}
+                style={member.style}
+              />
             ))}
           </div>
           <div className="about-section__fish about-section__fish--1" aria-hidden="true" />
