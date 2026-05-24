@@ -1,4 +1,5 @@
 import productsData from './products.json'
+import placeholderImage from '../assets/products/placeholder.png'
 
 const imageModules = import.meta.glob('../assets/products/*.{png,webp}', {
   eager: true,
@@ -6,8 +7,8 @@ const imageModules = import.meta.glob('../assets/products/*.{png,webp}', {
 })
 
 function resolveImage(filename) {
-  if (!filename) return null
-  return imageModules[`../assets/products/${filename}`] ?? null
+  if (!filename) return placeholderImage
+  return imageModules[`../assets/products/${filename}`] ?? placeholderImage
 }
 
 function computeNewestIds(products, count = 3) {

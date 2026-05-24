@@ -8,7 +8,6 @@ function formatPrice(price) {
 
 function ProductCard({ name, price, image, variant, alignment, size, isNew }) {
   const { whole, cents } = formatPrice(price)
-  const imageStyle = image ? { backgroundImage: `url(${image})` } : undefined
 
   const classNames = [
     'product-card',
@@ -38,12 +37,9 @@ function ProductCard({ name, price, image, variant, alignment, size, isNew }) {
         </button>
       </div>
       <div className="product-card__media">
-        <div
-          className="product-card__image"
-          role="img"
-          aria-label={name}
-          style={imageStyle}
-        />
+        {image && (
+          <img className="product-card__image" src={image} alt={name} />
+        )}
       </div>
     </article>
   )
