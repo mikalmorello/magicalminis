@@ -1,9 +1,16 @@
+@property --sky-bottom {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f7d5ef;
+}
+
 .hero-scene {
   position: relative;
   width: 100%;
   height: var(--hero-scene-height);
   padding-top: var(--header-height);
   overflow: hidden;
+  transition: --sky-bottom 0.6s ease;
 }
 
 .sky {
@@ -125,6 +132,10 @@
     animation: rainbowGlow var(--rainbow-glow-duration) ease-in-out infinite;
     animation-delay: calc(var(--band-index, 1) * 0.15s);
     transition: opacity 0.3s ease;
+
+    &:focus {
+      outline: none;
+    }
 
     &:hover {
       --rainbow-glow-duration: 3s;

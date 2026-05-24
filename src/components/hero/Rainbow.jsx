@@ -60,13 +60,24 @@ const SHADOWS = [
   { id: 'rainbow-shadow-8', dx: 5, dy: 5, blur: 5, opacity: 0.3 },
 ]
 
-function Rainbow() {
+function Rainbow({ onBandSelect }) {
+  function handleBandSelect(color) {
+    onBandSelect?.(color)
+  }
+
+  function handleBandKeyDown(event, color) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      handleBandSelect(color)
+    }
+  }
+
   return (
     <div
       className="rainbow"
       data-animate="glow"
-      role="img"
-      aria-label="Decorative rainbow"
+      role="group"
+      aria-label="Interactive rainbow — choose a color band to change the sky"
     >
       <svg
         className="rainbow__svg"
@@ -111,6 +122,11 @@ function Rainbow() {
               className="rainbow__band"
               style={{ '--band-index': band.index }}
               filter={`url(#${band.shadow})`}
+              role="button"
+              tabIndex={0}
+              aria-label={`Set sky color to ${band.fill}`}
+              onClick={() => handleBandSelect(band.fill)}
+              onKeyDown={(event) => handleBandKeyDown(event, band.fill)}
             >
               <path className="rainbow__arc" fill={band.fill} d={band.d} />
             </g>

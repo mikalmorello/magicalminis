@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import SkyBackground from './SkyBackground'
 import Cloud from './Cloud'
 import Rainbow from './Rainbow'
 import './hero.scss'
+
+const DEFAULT_SKY_BOTTOM = '#f7d5ef'
 
 const CLOUDS = [
   { className: 'cloud--1', style: { '--drift-x': '20px', '--drift-y': '-8px', '--drift-speed': '32s', '--cloud-scale': '1.35', top: '4%', left: '-3%' } },
@@ -13,15 +16,21 @@ const CLOUDS = [
 ]
 
 function HeroScene() {
+  const [skyBottom, setSkyBottom] = useState(DEFAULT_SKY_BOTTOM)
+
   return (
-    <section className="hero-scene" aria-label="Welcome">
+    <section
+      className="hero-scene"
+      aria-label="Welcome"
+      style={{ '--sky-bottom': skyBottom }}
+    >
       <SkyBackground />
       <div className="hero-scene__clouds" aria-hidden="true">
         {CLOUDS.map((cloud) => (
           <Cloud key={cloud.className} className={cloud.className} style={cloud.style} />
         ))}
       </div>
-      <Rainbow />
+      <Rainbow onBandSelect={setSkyBottom} />
     </section>
   )
 }
