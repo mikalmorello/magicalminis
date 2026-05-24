@@ -10,7 +10,7 @@
 .team-card {
   /* Top corners are a true semicircular dome (Y radius = X radius in px), per
      Figma reference file y9QCdfzeu2TpWmK4k6AcQs. Bottom corners gently rounded. */
-  --team-card-width: clamp(160px, 22vw, 210px);
+  --team-card-width: 240px;
   --team-card-dome-radius: calc(var(--team-card-width) / 2);
 
   position: relative;
@@ -25,13 +25,13 @@
     16px;
   box-shadow: var(--team-card-shadow);
   padding: clamp(0.85rem, 1.6vw, 1.1rem);
-  padding-bottom: clamp(0.9rem, 1.8vw, 1.2rem);
+  padding-bottom: .5rem;
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 18px 32px rgba(176, 70, 110, 0.22);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
   }
 
   &__media {
@@ -67,9 +67,8 @@
   &__name {
     display: block;
     text-align: center;
-    margin-top: clamp(0.5rem, 1.2vw, 0.85rem);
     font-family: var(--font-display);
-    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    font-size: 1.5rem;
     font-weight: 600;
     color: var(--team-card-name-color);
     letter-spacing: 0.005em;

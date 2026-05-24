@@ -62,7 +62,7 @@
   &__cards {
     display: flex;
     flex-wrap: wrap;
-    gap: clamp(0.75rem, 2vw, 1.25rem);
+    gap: 1rem;
     justify-content: center;
     align-items: flex-start;
   }
