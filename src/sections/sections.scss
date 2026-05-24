@@ -46,18 +46,41 @@
   }
 
   &__ribbon {
+    position: relative;
     display: inline-block;
-    background: var(--pink-primary);
     color: #f7d5ef;
     font-family: var(--font-burger);
     font-size: 2.25rem;
     font-weight: 600;
     line-height: 1.25;
-    padding: 0.4rem 1.25rem 0;
-    border-radius: 4px;
+    /* Extra horizontal padding gives the chevron notches room to bite in
+       without touching the text. */
+    padding: 0.4rem 1.75rem 0;
     margin-bottom: 1rem;
     transform: rotate(-1deg);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    /* drop-shadow on the *parent* element so it isn't clipped by the
+       clip-path that lives on ::before. (clip-path + filter on the same
+       element clips the shadow away — that's why it appeared invisible.) */
+    filter: drop-shadow(var(--card-shadow));
+
+    /* The pink ribbon shape lives on this pseudo-element. It receives the
+       clip-path so the parent stays a normal, unclipped box that the
+       drop-shadow can radiate around. */
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: #f28197;
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        96% 50%,
+        100% 100%,
+        0 100%,
+        4% 50%
+      );
+    }
   }
 
   &__cards {

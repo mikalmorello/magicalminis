@@ -40,12 +40,21 @@
   --teal-text: #2a8a8a;
   --teal-heading: #3a9a9a;
 
+  /* Shared card-style drop shadow — four-part value (offset-x offset-y blur color)
+     so it can be plugged into either `box-shadow` or `filter: drop-shadow(...)`.
+
+     Uses the comma-less `rgb(r g b / a)` color form: when this token is
+     substituted into `filter: drop-shadow(var(--card-shadow))`, an `rgba(…)`
+     value's commas can be mis-tokenized by some browsers (filter-function
+     args are space-separated). The modern syntax sidesteps that. */
+  --card-shadow: 0 4px 10px rgb(0 0 0 / 0.22);
+
   /* Team card */
   --team-card-bg: #f3c8d8;
   --team-card-name-color: #aa6db8;
   --team-card-photo-placeholder-start: #f9e0ec;
   --team-card-photo-placeholder-end: #e8b9ce;
-  --team-card-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
+  --team-card-shadow: var(--card-shadow);
 
   /* Star palette used as decorations on team photos (matches mockup) */
   --star-lavender: #d2bce0;
