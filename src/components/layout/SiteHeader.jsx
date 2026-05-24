@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { faMagnifyingGlass, faTruck } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '../../lib/fontawesome.js'
 import './SiteHeader.scss'
 
 function SiteHeader() {
@@ -14,7 +12,7 @@ function SiteHeader() {
     <header className="site-header">
       <div className="site-header__bar">
         <button type="button" className="site-header__search" aria-label="Search">
-          <FontAwesomeIcon icon={faMagnifyingGlass} className="site-header__search-icon" />
+          <span className="site-header__search-icon" aria-hidden="true" />
         </button>
 
         <Link to="/" className="site-header__logo" onClick={closeMenu}>
@@ -24,7 +22,7 @@ function SiteHeader() {
 
         <div className="site-header__actions">
           <div className="site-header__shipping">
-            <FontAwesomeIcon icon={faTruck} className="site-header__shipping-icon" aria-hidden="true" />
+            <span className="site-header__shipping-icon" aria-hidden="true" />
             <span className="site-header__shipping-text">
               Free <strong>SHIPPING</strong> on orders over $20
             </span>
