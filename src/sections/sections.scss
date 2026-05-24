@@ -1,7 +1,7 @@
 .about-section {
   position: relative;
   background: var(--wave-fill);
-  padding: 8rem var(--section-padding) 4rem;
+  padding: 8rem var(--section-padding) 10rem;
   margin-top: -1px;
 
   &__inner {
@@ -136,9 +136,18 @@
      pre-rotated 90° at build time so the grain runs horizontally — doing
      the rotation in the file (rather than via CSS `transform`) keeps the
      repeat seamless without needing an oversized rotated pseudo-element. */
+  position: relative;
   background: var(--beach-light) url('/textures/wood-horizontal.png') repeat;
   background-size: 500px 500px;
   padding: 3rem var(--section-padding) 4rem;
+
+  /* Upward-cast drop shadow at the wood's top edge, falling onto the blue
+     about-section above. Same shape as the team-card shadow (--card-shadow)
+     but with reduced opacity and a touch more blur so it reads as a soft
+     ambient shelf-edge shadow rather than a hard card lift. Side/bottom
+     blur leaks aren't visible because the section spans the full viewport
+     width and is the last block on the page. */
+  box-shadow: 0 -3px 12px rgb(0 0 0 / 0.1);
 
   &__header {
     display: flex;
