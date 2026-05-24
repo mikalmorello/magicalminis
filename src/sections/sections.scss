@@ -148,7 +148,7 @@
      ambient shelf-edge shadow rather than a hard card lift. Side/bottom
      blur leaks aren't visible because the section spans the full viewport
      width and is the last block on the page. */
-  box-shadow: 0 -3px 12px rgb(0 0 0 / 0.1);
+  box-shadow: 0 -3px 12px rgb(0 0 0 / 0.07);
 
   &__layout {
     display: grid;
