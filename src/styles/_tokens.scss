@@ -56,6 +56,24 @@
   --team-card-photo-placeholder-end: #e8b9ce;
   --team-card-shadow: var(--card-shadow);
 
+  /* Product card */
+  --product-card-bg-light: #fce8f0;
+  --product-card-bg-medium: #f1b0c4;
+  --product-card-bg-dark: #d63384;
+  --product-card-title-light: var(--pink-dark);
+  --product-card-title-dark: var(--white);
+  --product-card-action-bg-light: var(--pink-primary);
+  --product-card-action-arrow-light: var(--white);
+  --product-card-action-bg-dark: var(--white);
+  --product-card-action-arrow-dark: var(--pink-primary);
+  --product-card-shadow: var(--card-shadow);
+  --product-card-image-glow: radial-gradient(
+    circle at center,
+    rgb(255 255 255 / 0.85) 0%,
+    rgb(255 255 255 / 0.35) 35%,
+    transparent 65%
+  );
+
   /* Star palette used as decorations on team photos (matches mockup) */
   --star-lavender: #d2bce0;
   --star-pink: #f7c2d0;

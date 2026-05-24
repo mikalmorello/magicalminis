@@ -1,29 +1,8 @@
+import ProductCard from '../components/product/ProductCard'
+import { getProducts } from '../data/products'
 import './sections.scss'
 
-const PRODUCTS = [
-  { name: 'mini easel', price: '3.99', isNew: true },
-  { name: 'rainbow mini books', price: '4.99', isNew: true },
-  { name: 'cute colors', price: '2.99', isNew: true },
-  { name: 'love kitty box', price: '5.99', isNew: false },
-  { name: 'cutie wallet set', price: '6.99', isNew: false },
-  { name: 'lil drops umbrella', price: '3.49', isNew: false },
-  { name: 'teeny tiny beds', price: '4.49', isNew: false },
-  { name: 'baby bow book', price: '3.99', isNew: false },
-]
-
-function ProductCard({ name, price, isNew }) {
-  return (
-    <article className="product-card">
-      {isNew && <span className="product-card__badge">new</span>}
-      <h3 className="product-card__name">{name}</h3>
-      <p className="product-card__price">{price}</p>
-      <div className="product-card__image" aria-hidden="true" />
-      <button type="button" className="product-card__action" aria-label={`View ${name}`}>
-        <span className="product-card__arrow" aria-hidden="true" />
-      </button>
-    </article>
-  )
-}
+const products = getProducts()
 
 function ProductSection() {
   return (
@@ -39,8 +18,8 @@ function ProductSection() {
         </button>
       </div>
       <div className="product-section__grid">
-        {PRODUCTS.map((product) => (
-          <ProductCard key={product.name} {...product} />
+        {products.map((product) => (
+          <ProductCard key={product.id} {...product} />
         ))}
       </div>
     </section>
