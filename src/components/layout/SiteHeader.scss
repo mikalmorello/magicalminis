@@ -57,16 +57,17 @@
     justify-self: center;
     text-decoration: none;
     text-align: center;
-    line-height: 1.1;
+    line-height: 1;
     color: var(--pink-primary);
     font-family: var(--font-burger);
   }
 
   &__logo-magical {
     display: block;
-    font-size: 1.1rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.01em;
+    line-height: 0.9;
   }
 
   &__logo-minis {

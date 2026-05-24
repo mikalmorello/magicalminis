@@ -16,7 +16,7 @@ function SiteHeader() {
         </button>
 
         <Link to="/" className="site-header__logo" onClick={closeMenu}>
-          <span className="site-header__logo-magical">MAGICAL</span>
+          <span className="site-header__logo-magical">Magical</span>
           <span className="site-header__logo-minis">Minis</span>
         </Link>
 
