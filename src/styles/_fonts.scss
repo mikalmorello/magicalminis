@@ -1,0 +1,30 @@
+/*
+  Self-hosted BurgerElbow display font.
+
+  Two variants ship with the family:
+    - BurgerElbow            → standard letterforms
+    - BurgerElbow RoundEdge  → softer, rounded variant
+
+  Either family name can be referenced from CSS. The default `--font-burger`
+  token in `_tokens.scss` points at the standard cut; swap it to
+  `'BurgerElbow RoundEdge'` if the rounded variant is preferred.
+
+  Files live in `public/fonts/` so Vite serves them at stable root-relative
+  URLs (Sass `@use` does NOT rewrite relative url() paths from partials).
+*/
+
+@font-face {
+  font-family: 'BurgerElbow';
+  src: url('/fonts/BurgerElbow.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BurgerElbow RoundEdge';
+  src: url('/fonts/BurgerElbow-RoundEdge.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
