@@ -8,12 +8,21 @@
   - Decorations (SVG stars) overlay the right-middle of the photo
 */
 .team-card {
+  /* Top corners are a true semicircular dome (Y radius = X radius in px), per
+     Figma reference file y9QCdfzeu2TpWmK4k6AcQs. Bottom corners gently rounded. */
+  --team-card-width: clamp(160px, 22vw, 210px);
+  --team-card-dome-radius: calc(var(--team-card-width) / 2);
+
   position: relative;
   display: flex;
   flex-direction: column;
-  width: clamp(160px, 22vw, 210px);
+  width: var(--team-card-width);
   background: var(--team-card-bg);
-  border-radius: 48% 48% 16px 16px / 32% 32% 16px 16px;
+  border-radius:
+    var(--team-card-dome-radius)
+    var(--team-card-dome-radius)
+    16px
+    16px;
   box-shadow: var(--team-card-shadow);
   padding: clamp(0.85rem, 1.6vw, 1.1rem);
   padding-bottom: clamp(0.9rem, 1.8vw, 1.2rem);
