@@ -20,25 +20,25 @@ const TEAM = [
     name: 'artsy allie',
     photo: alliePhoto,
     style: {
-      '--team-card-bg': '#f3c8d8',
-      '--team-card-name-color': '#aa6db8',
+      '--team-card-bg': '#f7d5ef',
+      '--team-card-name-color': '#b289bd',
     },
     decorations: [
-      { shape: 'star', color: 'var(--star-lavender)', top: '30%', right: '-2%', size: 28 },
-      { shape: 'star', color: 'var(--star-pink)', top: '46%', right: '-6%', size: 22 },
-      { shape: 'star', color: 'var(--star-purple)', top: '62%', right: '-2%', size: 28 },
+      { shape: 'star', color: '#f7d5ef', top: '32%', right: '7%', size: 28 },
+      { shape: 'star', color: '#f9c2cd', top: '46%', right: '3%', size: 22 },
+      { shape: 'star', color: '#b289bd', top: '57%', right: '6%', size: 28 },
     ],
   },
   {
     id: 'jack',
-    name: 'Juxtapose jack',
+    name: 'juxtapose jack',
     photo: jackPhoto,
     style: {
-      '--team-card-bg': '#ed94a5',
-      '--team-card-name-color': '#ffffff',
+      '--team-card-bg': '#f28197',
+      '--team-card-name-color': '#f7d5ef',
     },
     decorations: [
-      { shape: 'halo', color: '#f3c8d8', top: '-2%', left: '20%', size: 110, rotate: '-12deg' },
+      { shape: 'halo', color: '#f9c2cd', top: '2%', left: '-4%', size: 95, rotate: '-50deg' },
     ],
   },
   {
@@ -46,13 +46,14 @@ const TEAM = [
     name: 'magical maia',
     photo: maiaPhoto,
     style: {
-      '--team-card-bg': '#f3c8d8',
-      '--team-card-name-color': '#d06088',
+      '--team-card-bg': '#f9c2cd',
+      '--team-card-name-color': '#f28197',
     },
     decorations: [
-      { shape: 'heart', color: '#f5a8c0', top: '32%', right: '-2%', size: 30 },
-      { shape: 'heart', color: '#f3c8d8', top: '50%', right: '-7%', size: 22 },
-      { shape: 'heart', color: '#d2bce0', top: '60%', right: '3%', size: 24 },
+      { shape: 'heart', color: '#9e005d', top: '52%', right: '2%', size: 26, rotate: '-5deg' },
+      { shape: 'heart', color: '#f28197', top: '64%', right: '7%', size: 22, rotate: '35deg' },
+      { shape: 'heart', color: '#f28197', top: '40%', left: '14%', size: 26, rotate: '-25deg'},
+      { shape: 'heart', color: '#f9c2cd', top: '52%', left: '10%', size: 28, rotate: '-45deg' },
     ],
   },
 ]

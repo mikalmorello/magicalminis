@@ -69,10 +69,10 @@
   &__name {
     display: block;
     text-align: center;
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 800;
     color: var(--team-card-name-color);
-    letter-spacing: 0.005em;
+    letter-spacing: -0.005em;
   }
 }
