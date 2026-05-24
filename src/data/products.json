@@ -44,7 +44,7 @@
     "price": 5.99,
     "variant": "dark",
     "alignment": "right",
-    "size": "wide",
+    "size": "default",
     "designer": "jack",
     "tags": ["storage", "kitty"],
     "availability": "available",

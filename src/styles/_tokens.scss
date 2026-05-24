@@ -73,6 +73,9 @@
     rgb(255 255 255 / 0.35) 35%,
     transparent 65%
   );
+  --product-grid-gap: 1.25rem;
+  --product-card-width: 220px;
+  --product-card-width-wide: 400px;
 
   /* Star palette used as decorations on team photos (matches mockup) */
   --star-lavender: #d2bce0;
