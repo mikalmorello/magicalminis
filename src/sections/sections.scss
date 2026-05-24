@@ -132,13 +132,12 @@
 }
 
 .product-section {
-  background: repeating-linear-gradient(
-    90deg,
-    var(--beach-light) 0px,
-    var(--beach-light) 40px,
-    var(--beach-mid) 40px,
-    var(--beach-mid) 42px
-  );
+  /* Wood-grain "shelf" backdrop. The source tile (500×500, seamless) is
+     pre-rotated 90° at build time so the grain runs horizontally — doing
+     the rotation in the file (rather than via CSS `transform`) keeps the
+     repeat seamless without needing an oversized rotated pseudo-element. */
+  background: var(--beach-light) url('/textures/wood-horizontal.png') repeat;
+  background-size: 500px 500px;
   padding: 3rem var(--section-padding) 4rem;
 
   &__header {
