@@ -68,8 +68,12 @@
   /* Typography */
   --font-display: 'Fredoka', cursive, sans-serif;
   --font-body: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  /* Self-hosted display face — swap to 'BurgerElbow RoundEdge' for the soft variant. */
+  /* Self-hosted BurgerElbow display face — two variants available.
+       --font-burger        → standard, sharper letterforms
+       --font-burger-round  → softer, rounded-edge variant
+     Both fall back to Fredoka, then a generic sans, while loading. */
   --font-burger: 'BurgerElbow', 'Fredoka', cursive, sans-serif;
+  --font-burger-round: 'BurgerElbow RoundEdge', 'Fredoka', cursive, sans-serif;
 
   /* Animation defaults */
   --cloud-drift-duration: 28s;

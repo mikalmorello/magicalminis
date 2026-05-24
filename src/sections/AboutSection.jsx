@@ -65,12 +65,11 @@ function AboutSection() {
       <div className="about-section__inner">
         <div className="about-section__copy">
           <h2 id="about-heading" className="about-section__heading">
-            ABOUT MAGICAL Minis
+            About Magical Minis
           </h2>
           <p className="about-section__text">
-            Welcome to Magical Minis — a whimsical world of tiny treasures designed with
-            love by our creative team. Every miniature is crafted to spark imagination and
-            bring a little magic to your day.
+            Welcome to Magical Minis, a whimsical world of tiny treasures designed with
+            love by our creative team.
           </p>
         </div>
 
