@@ -35,21 +35,7 @@
     display: block;
     width: 1.5rem;
     height: 1.5rem;
-    border: 2.5px solid var(--pink-primary);
-    border-radius: 50%;
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      width: 8px;
-      height: 2.5px;
-      background: var(--pink-primary);
-      bottom: -2px;
-      right: -6px;
-      transform: rotate(45deg);
-      border-radius: 2px;
-    }
+    color: var(--pink-primary);
   }
 
   &__logo {
@@ -103,23 +89,9 @@
 
   &__shipping-icon {
     flex-shrink: 0;
-    width: 14px;
-    height: 10px;
-    background: var(--pink-primary);
-    border-radius: 2px;
-    position: relative;
-
-    &::before {
-      content: '';
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      border: 1.5px solid var(--pink-primary);
-      border-radius: 50%;
-      background: transparent;
-      right: -4px;
-      top: 2px;
-    }
+    width: 0.75rem;
+    height: 0.75rem;
+    color: var(--pink-primary);
   }
 
   &__shipping-text strong {
