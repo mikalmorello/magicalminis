@@ -21,21 +21,17 @@
 
   &__heading {
     font-family: var(--font-burger);
-    font-size: 2.75rem;
+    font-size: 3rem;
     font-weight: 600;
     color: #076575;
     letter-spacing: -0.02em;
     line-height: 1.15;
     margin-bottom: 0.75rem;
-
-    @media (min-width: 768px) {
-      font-size: 2.5rem;
-    }
   }
 
   &__text {
     font-family: var(--font-body);
-    font-size: 1.75rem;
+    font-size: 1.65rem;
     font-weight: 700;
     color: #076575;
     line-height: 1.2;
