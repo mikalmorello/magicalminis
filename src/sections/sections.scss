@@ -159,14 +159,14 @@
     align-items: start;
 
     @media (min-width: 768px) {
-      grid-template-columns: 3fr 1fr;
+      grid-template-columns: 4fr 1fr;
     }
   }
 
   &__products {
     position: relative;
     z-index: 5;
-    min-width: 0;
+    width: 100%;
     /* Pull the first row of cards up over the about section. */
     margin-top: -75px;
   }
