@@ -1,7 +1,7 @@
 .about-section {
   position: relative;
   background: var(--wave-fill);
-  padding: 8rem var(--section-padding) 10rem;
+  padding: 8rem var(--section-padding) 8rem;
   margin-top: -1px;
 
   &__inner {
@@ -137,9 +137,10 @@
      the rotation in the file (rather than via CSS `transform`) keeps the
      repeat seamless without needing an oversized rotated pseudo-element. */
   position: relative;
+  z-index: 3;
   background: var(--beach-light) url('/textures/wood-horizontal.png') repeat;
   background-size: 500px 500px;
-  padding: 3rem var(--section-padding) 4rem;
+  padding: 2rem var(--section-padding) 4rem;
 
   /* Upward-cast drop shadow at the wood's top edge, falling onto the blue
      about-section above. Same shape as the team-card shadow (--card-shadow)
@@ -149,14 +150,34 @@
      width and is the last block on the page. */
   box-shadow: 0 -3px 12px rgb(0 0 0 / 0.1);
 
-  &__header {
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    align-items: start;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 3fr 1fr;
+    }
+  }
+
+  &__products {
+    position: relative;
+    z-index: 5;
+    min-width: 0;
+    /* Pull the first row of cards up over the about section. */
+    margin-top: -75px;
+  }
+
+  &__sidebar {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin-bottom: 2rem;
-    max-width: var(--max-content-width);
-    margin-left: auto;
-    margin-right: auto;
+    gap: 0.5rem;
+    /* Keep the heart + filters on the wood shelf, not in the overlap zone. */
+    padding-top: 50px;
   }
 
   &__heart {
@@ -171,7 +192,6 @@
       'M80 140 C80 140 10 90 10 50 C10 20 35 5 55 25 C75 5 100 20 100 50 C100 90 80 140 80 140 Z'
     );
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    margin-bottom: 0.5rem;
   }
 
   &__title {
@@ -207,8 +227,6 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
-    max-width: var(--max-content-width);
-    margin: 0 auto;
 
     @media (min-width: 768px) {
       grid-template-columns: repeat(6, 1fr);
