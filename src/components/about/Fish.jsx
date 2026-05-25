@@ -16,6 +16,13 @@ const FISH_SUBPATHS = FISH_PATH.trim().split(/\s(?=M\s)/).map((p) => p.trim())
 const FISH_SILHOUETTE = FISH_SUBPATHS[0] ?? FISH_PATH
 const FISH_EYES = FISH_SUBPATHS.slice(2)
 
+/* Four short marks under the upper eye, angled slightly toward the tail fin. */
+const CHEEK_LINE_X = [50, 60, 70, 80]
+const CHEEK_LINE_Y1 = 91
+const CHEEK_LINE_Y2 = 106
+const CHEEK_LINE_DX = 4
+const CHEEK_LINE_STROKE = 7
+
 function Fish({
   className,
   style,
@@ -77,6 +84,21 @@ function Fish({
           fill="#000"
         />
       ))}
+
+      <g className="fish__cheek-lines" aria-hidden="true">
+        {CHEEK_LINE_X.map((x) => (
+          <line
+            key={x}
+            x1={x}
+            y1={CHEEK_LINE_Y1}
+            x2={x + CHEEK_LINE_DX}
+            y2={CHEEK_LINE_Y2}
+            stroke="var(--pink-primary)"
+            strokeWidth={CHEEK_LINE_STROKE}
+            strokeLinecap="round"
+          />
+        ))}
+      </g>
 
       {children && <g className="fish__extras">{children}</g>}
     </svg>
