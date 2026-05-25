@@ -44,8 +44,21 @@
     text-align: center;
   }
 
-  &__ribbon {
+  &__fish-school {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: visible;
+  }
+
+  &__ribbon,
+  &__cards {
     position: relative;
+    z-index: 1;
+  }
+
+  &__ribbon {
     display: inline-block;
     color: #f7d5ef;
     font-family: var(--font-burger);
@@ -92,38 +105,9 @@
 
   &__fish {
     position: absolute;
-    /* Sit just above the section's teal background but behind every other
-       element inside the about section (ribbon, cards, copy). `__team` has
-       `position: relative` but no `z-index`, so it doesn't trap negative
-       values — the fish participate in `__inner`'s stacking context. */
-    z-index: -1;
-    width: 24px;
-    height: 14px;
-    border-radius: 50% 50% 40% 40%;
-    opacity: 0.7;
-
-    &--1 {
-      background: #f0a060;
-      top: 20%;
-      left: -8px;
-      transform: rotate(-15deg);
-    }
-
-    &--2 {
-      background: #60b0e0;
-      top: 50%;
-      right: 10%;
-      transform: rotate(20deg);
-    }
-
-    &--3 {
-      background: #f0a060;
-      bottom: 10%;
-      left: 30%;
-      transform: rotate(10deg);
-      width: 18px;
-      height: 10px;
-    }
+    display: block;
+    aspect-ratio: 293 / 150;
+    pointer-events: none;
   }
 }
 

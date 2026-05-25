@@ -1,5 +1,6 @@
 import WaveBackground from '../components/wave/WaveBackground'
 import TeamCard from '../components/team/TeamCard'
+import Fish from '../components/about/Fish'
 import alliePhoto from '../assets/team/allie.png'
 import jackPhoto from '../assets/team/jack.png'
 import maiaPhoto from '../assets/team/maia.png'
@@ -58,11 +59,62 @@ const TEAM = [
   },
 ]
 
+const ORANGE = { fill: '#fde8d4', stroke: '#f0a060' }
+const BLUE = { fill: '#d4ecf8', stroke: '#60b0e0' }
+
+/*
+  Fifteen fish in loose schools. Positions sit in open teal around the copy
+  block and team-card margins so they stay visible (not buried under cards).
+  A few members are nudged away from their group center.
+*/
+const FISH = [
+  // School 1 — orange, lower copy column (open space below text)
+  { ...ORANGE, size: 30, top: '72%', left: '5%', rotate: -16 },
+  { ...ORANGE, size: 26, top: 'calc(72% + 12px)', left: 'calc(5% + 28px)', rotate: 10 },
+  { ...ORANGE, size: 24, top: 'calc(72% + 28px)', left: 'calc(5% + 8px)', rotate: -4 },
+  { ...BLUE, size: 22, top: 'calc(72% - 4px)', left: 'calc(5% + 48px)', rotate: 24 },
+  { ...ORANGE, size: 20, top: 'calc(72% + 40px)', left: 'calc(5% + 44px)', rotate: -22 },
+
+  // School 2 — blue, upper-right strip above cards
+  { ...BLUE, size: 28, top: '3%', right: '4%', rotate: 12 },
+  { ...BLUE, size: 26, top: 'calc(3% + 10px)', right: 'calc(4% + 26px)', rotate: -8 },
+  { ...BLUE, size: 24, top: 'calc(3% + 6px)', right: 'calc(4% + 50px)', rotate: 20 },
+  { ...ORANGE, size: 22, top: 'calc(3% - 6px)', right: 'calc(4% + 38px)', rotate: -18 },
+
+  // School 3 — orange, right margin beside cards
+  { ...ORANGE, size: 26, top: '38%', right: '1%', rotate: 8 },
+  { ...ORANGE, size: 24, top: 'calc(38% + 14px)', right: 'calc(1% + 18px)', rotate: -12 },
+  { ...BLUE, size: 22, top: 'calc(38% + 4px)', right: 'calc(1% + 36px)', rotate: 16 },
+
+  // School 4 — mixed, lower-left copy column
+  { ...BLUE, size: 26, top: '88%', left: '12%', rotate: -10 },
+  { ...BLUE, size: 22, top: 'calc(88% + 12px)', left: 'calc(12% + 22px)', rotate: 14 },
+  { ...ORANGE, size: 20, top: 'calc(88% + 2px)', left: 'calc(12% + 46px)', rotate: -26 },
+]
+
 function AboutSection() {
   return (
     <section className="about-section" id="about" aria-labelledby="about-heading">
       <WaveBackground />
       <div className="about-section__inner">
+        <div className="about-section__fish-school" aria-hidden="true">
+          {FISH.map((fish, i) => (
+            <Fish
+              key={i}
+              className="about-section__fish"
+              fill={fish.fill}
+              stroke={fish.stroke}
+              style={{
+                top: fish.top,
+                left: fish.left,
+                right: fish.right,
+                width: fish.size,
+                transform: `rotate(${fish.rotate}deg)`,
+              }}
+            />
+          ))}
+        </div>
+
         <div className="about-section__copy">
           <h2 id="about-heading" className="about-section__heading">
             About Magical Minis
@@ -86,9 +138,6 @@ function AboutSection() {
               />
             ))}
           </div>
-          <div className="about-section__fish about-section__fish--1" aria-hidden="true" />
-          <div className="about-section__fish about-section__fish--2" aria-hidden="true" />
-          <div className="about-section__fish about-section__fish--3" aria-hidden="true" />
         </div>
       </div>
     </section>
