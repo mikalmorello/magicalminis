@@ -65,29 +65,14 @@ const BLUE = { fill: '#d4ecf8', stroke: '#60b0e0' }
 /** Minimum gap between fish bounding boxes (px). */
 const FISH_MIN_GAP = 5
 
-/** Schools keep their scatter; offsets maintain at least FISH_MIN_GAP. */
+/** Offset within a school group; maintain at least FISH_MIN_GAP between fish. */
 function schoolFish({ color, size, x = 0, y = 0 }) {
-  return { color, size, x, y }
+  return { ...color, size, x, y }
 }
 
-function buildSchool({ top, left, right, fish }) {
-  return fish.map(({ color, size, x, y }) => ({
-    ...color,
-    size,
-    top: `calc(${top} + ${y}px)`,
-    ...(left != null ? { left: `calc(${left} + ${x}px)` } : {}),
-    ...(right != null ? { right: `calc(${right} + ${x}px)` } : {}),
-  }))
-}
-
-/** Lone fish — absolute position anywhere in the about section */
-function loneFish({ color, size, top, left, right }) {
-  return { ...color, size, top, left, right }
-}
-
-const FISH = [
-  // School 1 — main cluster (10 fish, double the original school size)
-  ...buildSchool({
+const FISH_SCHOOLS = [
+  {
+    id: 'bottom-left',
     top: '72%',
     left: '5%',
     fish: [
@@ -96,16 +81,15 @@ const FISH = [
       schoolFish({ color: ORANGE, size: 34, x: 0, y: 32 }),
       schoolFish({ color: BLUE, size: 32, x: 96, y: 0 }),
       schoolFish({ color: ORANGE, size: 30, x: 52, y: 56 }),
-      // Added fish — second loose blob below, not aligned to a grid
       schoolFish({ color: BLUE, size: 32, x: 18, y: 88 }),
       schoolFish({ color: ORANGE, size: 28, x: 70, y: 102 }),
       schoolFish({ color: BLUE, size: 30, x: 8, y: 124 }),
       schoolFish({ color: ORANGE, size: 28, x: 108, y: 112 }),
       schoolFish({ color: BLUE, size: 32, x: 128, y: 78 }),
     ],
-  }),
-
-  ...buildSchool({
+  },
+  {
+    id: 'top-right',
     top: '3%',
     right: '4%',
     fish: [
@@ -114,9 +98,9 @@ const FISH = [
       schoolFish({ color: BLUE, size: 34, x: 94, y: 5 }),
       schoolFish({ color: ORANGE, size: 32, x: 64, y: 44 }),
     ],
-  }),
-
-  ...buildSchool({
+  },
+  {
+    id: 'mid-right',
     top: '38%',
     right: '1%',
     fish: [
@@ -124,9 +108,9 @@ const FISH = [
       schoolFish({ color: ORANGE, size: 34, x: 46, y: 44 }),
       schoolFish({ color: BLUE, size: 32, x: 102, y: 46 }),
     ],
-  }),
-
-  ...buildSchool({
+  },
+  {
+    id: 'bottom-right',
     top: '91%',
     right: '8%',
     fish: [
@@ -134,14 +118,16 @@ const FISH = [
       schoolFish({ color: BLUE, size: 32, x: 44, y: 16 }),
       schoolFish({ color: ORANGE, size: 30, x: 88, y: 6 }),
     ],
-  }),
+  },
+]
 
-  // Stragglers — scattered outside the schools
-  loneFish({ ...ORANGE, size: 30, top: '16%', left: '6%' }),
-  loneFish({ ...BLUE, size: 28, top: '48%', left: '3%' }),
-  loneFish({ ...BLUE, size: 30, top: '12%', right: '22%' }),
-  loneFish({ ...ORANGE, size: 28, top: '58%', left: '34%' }),
-  loneFish({ ...BLUE, size: 26, top: '68%', right: '16%' }),
+/** Lone fish — absolute position anywhere in the about section */
+const FISH_STRAGGLERS = [
+  { ...ORANGE, size: 30, top: '16%', left: '6%' },
+  { ...BLUE, size: 28, top: '48%', left: '3%' },
+  { ...BLUE, size: 30, top: '12%', right: '22%' },
+  { ...ORANGE, size: 28, top: '58%', left: '34%' },
+  { ...BLUE, size: 26, top: '68%', right: '16%' },
 ]
 
 function AboutSection() {
@@ -150,10 +136,37 @@ function AboutSection() {
       <WaveBackground />
       <div className="about-section__inner">
         <div className="about-section__fish-school" aria-hidden="true">
-          {FISH.map((fish, i) => (
+          {FISH_SCHOOLS.map((school) => (
+            <div
+              key={school.id}
+              className="about-section__fish-group"
+              style={{
+                top: school.top,
+                left: school.left,
+                right: school.right,
+              }}
+            >
+              {school.fish.map((fish, i) => (
+                <Fish
+                  key={i}
+                  className="about-section__fish"
+                  fill={fish.fill}
+                  stroke={fish.stroke}
+                  {...(fish.rotate != null && { rotate: fish.rotate })}
+                  style={{
+                    top: `${fish.y}px`,
+                    left: `${fish.x}px`,
+                    width: fish.size,
+                  }}
+                />
+              ))}
+            </div>
+          ))}
+
+          {FISH_STRAGGLERS.map((fish, i) => (
             <Fish
-              key={i}
-              className="about-section__fish"
+              key={`straggler-${i}`}
+              className="about-section__fish about-section__fish--lone"
               fill={fish.fill}
               stroke={fish.stroke}
               {...(fish.rotate != null && { rotate: fish.rotate })}

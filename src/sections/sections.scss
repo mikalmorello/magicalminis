@@ -39,8 +39,14 @@
     letter-spacing: -0.02em;
   }
 
+  &__copy {
+    position: relative;
+    z-index: 1;
+  }
+
   &__team {
     position: relative;
+    z-index: 1;
     text-align: center;
   }
 
@@ -50,6 +56,11 @@
     z-index: 0;
     pointer-events: none;
     overflow: visible;
+  }
+
+  &__fish-group {
+    position: absolute;
+    pointer-events: none;
   }
 
   &__ribbon,
