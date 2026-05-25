@@ -27,7 +27,8 @@ function palette(colors, stroke) {
     stops: buildStops(colors),
     stroke,
     primary,
-    fin: `color-mix(in srgb, ${primary} 68%, black)`,
+    /* Same hue/chroma as the primary stop — just a touch darker. */
+    fin: `oklch(from ${primary} calc(l * 0.9) c h)`,
   }
 }
 
