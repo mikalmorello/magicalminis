@@ -89,7 +89,7 @@ function Fish({
         <path
           className="fish__eye"
           d={FISH_EYE}
-          fill="#000"
+          fill="#2a2a2a"
         />
       )}
 
