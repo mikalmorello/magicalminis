@@ -133,7 +133,6 @@ const FISH_SCHOOLS = [
 
 /** Lone fish — absolute position anywhere in the about section */
 const FISH_STRAGGLERS = [
-  { palette: BLUE, size: 30, top: '12%', right: '22%' },
   { palette: GREEN, size: 28, top: '58%', left: '34%' },
   { palette: BLUE, size: 26, top: '68%', right: '16%' },
 ]
