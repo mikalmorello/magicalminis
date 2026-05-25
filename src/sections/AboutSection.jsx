@@ -59,8 +59,9 @@ const TEAM = [
   },
 ]
 
-const ORANGE = { fill: '#fde8d4', stroke: '#f0a060' }
-const BLUE = { fill: '#d4ecf8', stroke: '#60b0e0' }
+const ORANGE = 'pink-orange'
+const BLUE = 'blue-purple-pink'
+const GREEN = 'green-purple-pink'
 
 /** Minimum gap between fish bounding boxes (px). */
 const FISH_MIN_GAP = 5
@@ -70,9 +71,9 @@ const FISH_SIZE_BONUS = 5
 const FISH_ASPECT = 150 / 293
 
 /** Offset within a school group; maintain at least FISH_MIN_GAP between fish. */
-function schoolFish({ color, size, x = 0, y = 0 }) {
+function schoolFish({ palette, size, x = 0, y = 0 }) {
   return {
-    ...color,
+    palette,
     size: size + FISH_SIZE_BONUS,
     x: x + (x > 0 ? FISH_SIZE_BONUS : 0),
     y: y + (y > 0 ? FISH_SIZE_BONUS * FISH_ASPECT : 0),
@@ -85,16 +86,16 @@ const FISH_SCHOOLS = [
     top: '72%',
     left: '5%',
     fish: [
-      schoolFish({ color: ORANGE, size: 40 }),
-      schoolFish({ color: ORANGE, size: 36, x: 50, y: 12 }),
-      schoolFish({ color: ORANGE, size: 34, x: 0, y: 32 }),
-      schoolFish({ color: BLUE, size: 32, x: 96, y: 0 }),
-      schoolFish({ color: ORANGE, size: 30, x: 52, y: 56 }),
-      schoolFish({ color: BLUE, size: 32, x: 18, y: 88 }),
-      schoolFish({ color: ORANGE, size: 28, x: 70, y: 102 }),
-      schoolFish({ color: BLUE, size: 30, x: 8, y: 124 }),
-      schoolFish({ color: ORANGE, size: 28, x: 108, y: 112 }),
-      schoolFish({ color: BLUE, size: 32, x: 128, y: 78 }),
+      schoolFish({ palette: ORANGE, size: 40 }),
+      schoolFish({ palette: ORANGE, size: 36, x: 50, y: 12 }),
+      schoolFish({ palette: GREEN, size: 34, x: 0, y: 32 }),
+      schoolFish({ palette: BLUE, size: 32, x: 96, y: 0 }),
+      schoolFish({ palette: ORANGE, size: 30, x: 52, y: 56 }),
+      schoolFish({ palette: BLUE, size: 32, x: 18, y: 88 }),
+      schoolFish({ palette: GREEN, size: 28, x: 70, y: 102 }),
+      schoolFish({ palette: BLUE, size: 30, x: 8, y: 124 }),
+      schoolFish({ palette: GREEN, size: 28, x: 108, y: 112 }),
+      schoolFish({ palette: BLUE, size: 32, x: 128, y: 78 }),
     ],
   },
   {
@@ -102,10 +103,10 @@ const FISH_SCHOOLS = [
     top: '3%',
     right: '4%',
     fish: [
-      schoolFish({ color: BLUE, size: 38 }),
-      schoolFish({ color: BLUE, size: 36, x: 48, y: 12 }),
-      schoolFish({ color: BLUE, size: 34, x: 94, y: 5 }),
-      schoolFish({ color: ORANGE, size: 32, x: 64, y: 44 }),
+      schoolFish({ palette: BLUE, size: 38 }),
+      schoolFish({ palette: BLUE, size: 36, x: 48, y: 12 }),
+      schoolFish({ palette: BLUE, size: 34, x: 94, y: 5 }),
+      schoolFish({ palette: ORANGE, size: 32, x: 64, y: 44 }),
     ],
   },
   {
@@ -113,9 +114,9 @@ const FISH_SCHOOLS = [
     top: '38%',
     right: '1%',
     fish: [
-      schoolFish({ color: ORANGE, size: 36 }),
-      schoolFish({ color: ORANGE, size: 34, x: 46, y: 44 }),
-      schoolFish({ color: BLUE, size: 32, x: 102, y: 46 }),
+      schoolFish({ palette: GREEN, size: 36 }),
+      schoolFish({ palette: ORANGE, size: 34, x: 46, y: 44 }),
+      schoolFish({ palette: BLUE, size: 32, x: 102, y: 46 }),
     ],
   },
   {
@@ -123,20 +124,18 @@ const FISH_SCHOOLS = [
     top: '91%',
     right: '8%',
     fish: [
-      schoolFish({ color: BLUE, size: 36 }),
-      schoolFish({ color: BLUE, size: 32, x: 44, y: 16 }),
-      schoolFish({ color: ORANGE, size: 30, x: 88, y: 6 }),
+      schoolFish({ palette: BLUE, size: 36 }),
+      schoolFish({ palette: BLUE, size: 32, x: 44, y: 16 }),
+      schoolFish({ palette: ORANGE, size: 30, x: 88, y: 6 }),
     ],
   },
 ]
 
 /** Lone fish — absolute position anywhere in the about section */
 const FISH_STRAGGLERS = [
-  { ...ORANGE, size: 30, top: '16%', left: '6%' },
-  { ...BLUE, size: 28, top: '48%', left: '3%' },
-  { ...BLUE, size: 30, top: '12%', right: '22%' },
-  { ...ORANGE, size: 28, top: '58%', left: '34%' },
-  { ...BLUE, size: 26, top: '68%', right: '16%' },
+  { palette: BLUE, size: 30, top: '12%', right: '22%' },
+  { palette: GREEN, size: 28, top: '58%', left: '34%' },
+  { palette: BLUE, size: 26, top: '68%', right: '16%' },
 ]
 
 function AboutSection() {
@@ -159,8 +158,7 @@ function AboutSection() {
                 <Fish
                   key={i}
                   className="about-section__fish"
-                  fill={fish.fill}
-                  stroke={fish.stroke}
+                  palette={fish.palette}
                   {...(fish.rotate != null && { rotate: fish.rotate })}
                   style={{
                     top: `${fish.y}px`,
@@ -176,8 +174,7 @@ function AboutSection() {
             <Fish
               key={`straggler-${i}`}
               className="about-section__fish about-section__fish--lone"
-              fill={fish.fill}
-              stroke={fish.stroke}
+              palette={fish.palette}
               {...(fish.rotate != null && { rotate: fish.rotate })}
               style={{
                 top: fish.top,
