@@ -1,4 +1,5 @@
 import SquiggleLine from './SquiggleLine'
+import NewBadge from './NewBadge'
 import './product-card.scss'
 
 function formatPrice(price) {
@@ -20,7 +21,7 @@ function ProductCard({ name, price, image, variant, alignment, size, isNew }) {
 
   return (
     <article className={classNames}>
-      {isNew && <span className="product-card__badge">new</span>}
+      {isNew && <NewBadge className="product-card__badge">new</NewBadge>}
       <div className="product-card__info">
         <h3 className="product-card__title">{name}</h3>
         <SquiggleLine className="product-card__squiggle" />
