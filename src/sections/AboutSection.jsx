@@ -62,34 +62,86 @@ const TEAM = [
 const ORANGE = { fill: '#fde8d4', stroke: '#f0a060' }
 const BLUE = { fill: '#d4ecf8', stroke: '#60b0e0' }
 
-/*
-  Fifteen fish in loose schools. Positions sit in open teal around the copy
-  block and team-card margins so they stay visible (not buried under cards).
-  A few members are nudged away from their group center.
-*/
+/** Minimum gap between fish bounding boxes (px). */
+const FISH_MIN_GAP = 5
+
+/** Schools keep their scatter; offsets maintain at least FISH_MIN_GAP. */
+function schoolFish({ color, size, x = 0, y = 0 }) {
+  return { color, size, x, y }
+}
+
+function buildSchool({ top, left, right, fish }) {
+  return fish.map(({ color, size, x, y }) => ({
+    ...color,
+    size,
+    top: `calc(${top} + ${y}px)`,
+    ...(left != null ? { left: `calc(${left} + ${x}px)` } : {}),
+    ...(right != null ? { right: `calc(${right} + ${x}px)` } : {}),
+  }))
+}
+
+/** Lone fish — absolute position anywhere in the about section */
+function loneFish({ color, size, top, left, right }) {
+  return { ...color, size, top, left, right }
+}
+
 const FISH = [
-  // School 1 — orange, lower copy column (open space below text)
-  { ...ORANGE, size: 30, top: '72%', left: '5%', rotate: -16 },
-  { ...ORANGE, size: 26, top: 'calc(72% + 12px)', left: 'calc(5% + 28px)', rotate: 10 },
-  { ...ORANGE, size: 24, top: 'calc(72% + 28px)', left: 'calc(5% + 8px)', rotate: -4 },
-  { ...BLUE, size: 22, top: 'calc(72% - 4px)', left: 'calc(5% + 48px)', rotate: 24 },
-  { ...ORANGE, size: 20, top: 'calc(72% + 40px)', left: 'calc(5% + 44px)', rotate: -22 },
+  // School 1 — main cluster (10 fish, double the original school size)
+  ...buildSchool({
+    top: '72%',
+    left: '5%',
+    fish: [
+      schoolFish({ color: ORANGE, size: 40 }),
+      schoolFish({ color: ORANGE, size: 36, x: 50, y: 12 }),
+      schoolFish({ color: ORANGE, size: 34, x: 0, y: 32 }),
+      schoolFish({ color: BLUE, size: 32, x: 96, y: 0 }),
+      schoolFish({ color: ORANGE, size: 30, x: 52, y: 56 }),
+      // Added fish — second loose blob below, not aligned to a grid
+      schoolFish({ color: BLUE, size: 32, x: 18, y: 88 }),
+      schoolFish({ color: ORANGE, size: 28, x: 70, y: 102 }),
+      schoolFish({ color: BLUE, size: 30, x: 8, y: 124 }),
+      schoolFish({ color: ORANGE, size: 28, x: 108, y: 112 }),
+      schoolFish({ color: BLUE, size: 32, x: 128, y: 78 }),
+    ],
+  }),
 
-  // School 2 — blue, upper-right strip above cards
-  { ...BLUE, size: 28, top: '3%', right: '4%', rotate: 12 },
-  { ...BLUE, size: 26, top: 'calc(3% + 10px)', right: 'calc(4% + 26px)', rotate: -8 },
-  { ...BLUE, size: 24, top: 'calc(3% + 6px)', right: 'calc(4% + 50px)', rotate: 20 },
-  { ...ORANGE, size: 22, top: 'calc(3% - 6px)', right: 'calc(4% + 38px)', rotate: -18 },
+  ...buildSchool({
+    top: '3%',
+    right: '4%',
+    fish: [
+      schoolFish({ color: BLUE, size: 38 }),
+      schoolFish({ color: BLUE, size: 36, x: 48, y: 12 }),
+      schoolFish({ color: BLUE, size: 34, x: 94, y: 5 }),
+      schoolFish({ color: ORANGE, size: 32, x: 64, y: 44 }),
+    ],
+  }),
 
-  // School 3 — orange, right margin beside cards
-  { ...ORANGE, size: 26, top: '38%', right: '1%', rotate: 8 },
-  { ...ORANGE, size: 24, top: 'calc(38% + 14px)', right: 'calc(1% + 18px)', rotate: -12 },
-  { ...BLUE, size: 22, top: 'calc(38% + 4px)', right: 'calc(1% + 36px)', rotate: 16 },
+  ...buildSchool({
+    top: '38%',
+    right: '1%',
+    fish: [
+      schoolFish({ color: ORANGE, size: 36 }),
+      schoolFish({ color: ORANGE, size: 34, x: 46, y: 44 }),
+      schoolFish({ color: BLUE, size: 32, x: 102, y: 46 }),
+    ],
+  }),
 
-  // School 4 — mixed, lower-left copy column
-  { ...BLUE, size: 26, top: '88%', left: '12%', rotate: -10 },
-  { ...BLUE, size: 22, top: 'calc(88% + 12px)', left: 'calc(12% + 22px)', rotate: 14 },
-  { ...ORANGE, size: 20, top: 'calc(88% + 2px)', left: 'calc(12% + 46px)', rotate: -26 },
+  ...buildSchool({
+    top: '91%',
+    right: '8%',
+    fish: [
+      schoolFish({ color: BLUE, size: 36 }),
+      schoolFish({ color: BLUE, size: 32, x: 44, y: 16 }),
+      schoolFish({ color: ORANGE, size: 30, x: 88, y: 6 }),
+    ],
+  }),
+
+  // Stragglers — scattered outside the schools
+  loneFish({ ...ORANGE, size: 30, top: '16%', left: '6%' }),
+  loneFish({ ...BLUE, size: 28, top: '48%', left: '3%' }),
+  loneFish({ ...BLUE, size: 30, top: '12%', right: '22%' }),
+  loneFish({ ...ORANGE, size: 28, top: '58%', left: '34%' }),
+  loneFish({ ...BLUE, size: 26, top: '68%', right: '16%' }),
 ]
 
 function AboutSection() {
@@ -104,12 +156,12 @@ function AboutSection() {
               className="about-section__fish"
               fill={fish.fill}
               stroke={fish.stroke}
+              {...(fish.rotate != null && { rotate: fish.rotate })}
               style={{
                 top: fish.top,
                 left: fish.left,
                 right: fish.right,
                 width: fish.size,
-                transform: `rotate(${fish.rotate}deg)`,
               }}
             />
           ))}
