@@ -25,7 +25,9 @@ const CHEEK_LINE_DX = 4
 const CHEEK_LINE_STROKE = 7
 
 function Fish({
+  id,
   className,
+  instanceClassName,
   style,
   palette = 'pink-orange',
   fill,
@@ -42,9 +44,12 @@ function Fish({
       ? { ...style, transform: `rotate(${rotate}deg)` }
       : style
 
+  const classes = [className, instanceClassName].filter(Boolean).join(' ')
+
   return (
     <svg
-      className={className}
+      id={id}
+      className={classes}
       style={svgStyle}
       viewBox={VIEWBOX}
       xmlns="http://www.w3.org/2000/svg"

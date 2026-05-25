@@ -71,70 +71,74 @@ const FISH_SIZE_BONUS = 5
 const FISH_ASPECT = 150 / 293
 
 /** Offset within a school group; maintain at least FISH_MIN_GAP between fish. */
-function schoolFish({ palette, size, x = 0, y = 0 }) {
+function schoolFish({ id, palette, size, x = 0, y = 0, rotate }) {
   return {
+    id,
     palette,
     size: size + FISH_SIZE_BONUS,
     x: x + (x > 0 ? FISH_SIZE_BONUS : 0),
     y: y + (y > 0 ? FISH_SIZE_BONUS * FISH_ASPECT : 0),
+    ...(rotate != null && { rotate }),
   }
 }
 
 const FISH_SCHOOLS = [
   {
     id: 'bottom-left',
-    top: '72%',
-    left: '5%',
+    top: '75%',
+    left: '30%',
     fish: [
-      schoolFish({ palette: ORANGE, size: 40 }),
-      schoolFish({ palette: ORANGE, size: 36, x: 50, y: 12 }),
-      schoolFish({ palette: GREEN, size: 34, x: 0, y: 32 }),
-      schoolFish({ palette: BLUE, size: 32, x: 96, y: 0 }),
-      schoolFish({ palette: ORANGE, size: 30, x: 52, y: 56 }),
-      schoolFish({ palette: BLUE, size: 32, x: 18, y: 88 }),
-      schoolFish({ palette: GREEN, size: 28, x: 70, y: 102 }),
-      schoolFish({ palette: BLUE, size: 30, x: 8, y: 124 }),
-      schoolFish({ palette: GREEN, size: 28, x: 108, y: 112 }),
-      schoolFish({ palette: BLUE, size: 32, x: 128, y: 78 }),
+      schoolFish({ id: 'bottom-left-1', palette: ORANGE, size: 40 }),
+      schoolFish({ id: 'bottom-left-2', palette: ORANGE, size: 36, x: 50, y: 12 }),
+      schoolFish({ id: 'bottom-left-3', palette: GREEN, size: 34, x: 0, y: 32 }),
+      schoolFish({ id: 'bottom-left-4', palette: BLUE, size: 32, x: 96, y: 0 }),
+      schoolFish({ id: 'bottom-left-5', palette: ORANGE, size: 30, x: -40, y: 65 }),
+      schoolFish({ id: 'bottom-left-6', palette: BLUE, size: 32, x: 18, y: 88 }),
+      schoolFish({ id: 'bottom-left-7', palette: GREEN, size: 28, x: 70, y: 102 }),
+      schoolFish({ id: 'bottom-left-8', palette: BLUE, size: 30, x: 8, y: 124 }),
+      schoolFish({ id: 'bottom-left-9', palette: GREEN, size: 28, x: 108, y: 112 }),
+      schoolFish({ id: 'bottom-left-10', palette: BLUE, size: 32, x: 60, y: 60 }),
     ],
   },
   {
     id: 'top-right',
     top: '3%',
-    right: '4%',
+    right: '10%',
     fish: [
-      schoolFish({ palette: BLUE, size: 38 }),
-      schoolFish({ palette: BLUE, size: 36, x: 48, y: 12 }),
-      schoolFish({ palette: BLUE, size: 34, x: 94, y: 5 }),
-      schoolFish({ palette: ORANGE, size: 32, x: 64, y: 44 }),
+      schoolFish({ id: 'top-right-1', palette: BLUE, size: 38 }),
+      schoolFish({ id: 'top-right-2', palette: BLUE, size: 36, x: 48, y: 12 }),
+      schoolFish({ id: 'top-right-3', palette: BLUE, size: 34, x: 94, y: 5 }),
+      schoolFish({ id: 'top-right-4', palette: ORANGE, size: 32, x: 64, y: 44 }),
+      schoolFish({ id: 'top-right-5', palette: ORANGE, size: 32, x: -20, y: 30 }),
     ],
   },
   {
     id: 'mid-right',
-    top: '38%',
-    right: '1%',
+    top: '25%',
+    right: '5%',
     fish: [
-      schoolFish({ palette: GREEN, size: 36 }),
-      schoolFish({ palette: ORANGE, size: 34, x: 46, y: 44 }),
-      schoolFish({ palette: BLUE, size: 32, x: 102, y: 46 }),
+      schoolFish({ id: 'mid-right-1', palette: GREEN, size: 36 }),
+      schoolFish({ id: 'mid-right-2', palette: ORANGE, size: 34, x: 46, y: 44 }),
+      schoolFish({ id: 'mid-right-3', palette: BLUE, size: 32, x: 102, y: 46 }),
     ],
   },
   {
     id: 'bottom-right',
     top: '91%',
-    right: '8%',
+    right: '-3%',
     fish: [
-      schoolFish({ palette: BLUE, size: 36 }),
-      schoolFish({ palette: BLUE, size: 32, x: 44, y: 16 }),
-      schoolFish({ palette: ORANGE, size: 30, x: 88, y: 6 }),
+      schoolFish({ id: 'bottom-right-1', palette: BLUE, size: 36 }),
+      schoolFish({ id: 'bottom-right-2', palette: BLUE, size: 32, x: 44, y: 16 }),
+      schoolFish({ id: 'bottom-right-3', palette: ORANGE, size: 30, x: 88, y: 6 }),
     ],
   },
 ]
 
 /** Lone fish — absolute position anywhere in the about section */
 const FISH_STRAGGLERS = [
-  { palette: GREEN, size: 28, top: '58%', left: '34%' },
-  { palette: BLUE, size: 26, top: '68%', right: '16%' },
+  { id: 'upper-left', palette: ORANGE, size: 30, top: '12%', left: '-10%' },
+  { id: 'mid-left', palette: GREEN, size: 28, top: '58%', left: '34%' },
+  { id: 'lower-right', palette: BLUE, size: 26, top: '68%', right: '16%' },
 ]
 
 function AboutSection() {
@@ -146,17 +150,22 @@ function AboutSection() {
           {FISH_SCHOOLS.map((school) => (
             <div
               key={school.id}
-              className="about-section__fish-group"
+              className={[
+                'about-section__fish-group',
+                `about-section__fish-group-${school.id}`,
+              ].join(' ')}
               style={{
                 top: school.top,
                 left: school.left,
                 right: school.right,
               }}
             >
-              {school.fish.map((fish, i) => (
+              {school.fish.map((fish) => (
                 <Fish
-                  key={i}
+                  key={fish.id}
+                  id={fish.id}
                   className="about-section__fish"
+                  instanceClassName={`about-section__fish-${fish.id}`}
                   palette={fish.palette}
                   {...(fish.rotate != null && { rotate: fish.rotate })}
                   style={{
@@ -169,10 +178,12 @@ function AboutSection() {
             </div>
           ))}
 
-          {FISH_STRAGGLERS.map((fish, i) => (
+          {FISH_STRAGGLERS.map((fish) => (
             <Fish
-              key={`straggler-${i}`}
+              key={fish.id}
+              id={fish.id}
               className="about-section__fish about-section__fish--lone"
+              instanceClassName={`about-section__fish-${fish.id}`}
               palette={fish.palette}
               {...(fish.rotate != null && { rotate: fish.rotate })}
               style={{
