@@ -1,4 +1,4 @@
-/** First color holds through 50%; remaining colors split the second half evenly. */
+/** First color holds through 50%; remaining colors feather in without hard mid bands. */
 function buildStops(colors) {
   if (colors.length === 1) {
     return [
@@ -11,6 +11,16 @@ function buildStops(colors) {
     { offset: '0%', color: colors[0] },
     { offset: '50%', color: colors[0] },
   ]
+
+  if (colors.length === 3) {
+    const [c1, c2, c3] = colors
+    stops.push(
+      { offset: '64%', color: `color-mix(in srgb, ${c1} 55%, ${c2} 45%)` },
+      { offset: '82%', color: `color-mix(in srgb, ${c2} 35%, ${c3} 65%)` },
+      { offset: '100%', color: c3 },
+    )
+    return stops
+  }
 
   const rest = colors.slice(1)
   rest.forEach((color, i) => {
