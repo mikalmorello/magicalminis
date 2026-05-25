@@ -22,7 +22,13 @@ function buildStops(colors) {
 }
 
 function palette(colors, stroke) {
-  return { stops: buildStops(colors), stroke }
+  const primary = colors[0]
+  return {
+    stops: buildStops(colors),
+    stroke,
+    primary,
+    fin: `color-mix(in srgb, ${primary} 68%, black)`,
+  }
 }
 
 /** Named gradient fills for Fish — colors from design tokens. */

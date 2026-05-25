@@ -11,10 +11,11 @@ import { FISH_PALETTES } from './fishPalettes'
 const VIEWBOX = fishSvg.match(/viewBox="([^"]+)"/)?.[1] ?? '0 0 293 150'
 const FISH_PATH = fishSvg.match(/\bd="([^"]+)"/)?.[1] ?? ''
 
-/* Subpaths: body silhouette, inner contour (unused), then eyes (see fish.svg). */
+/* Subpaths: body silhouette, inner contour (unused), eye, then fin (see fish.svg). */
 const FISH_SUBPATHS = FISH_PATH.trim().split(/\s(?=M\s)/).map((p) => p.trim())
 const FISH_SILHOUETTE = FISH_SUBPATHS[0] ?? FISH_PATH
-const FISH_EYES = FISH_SUBPATHS.slice(2)
+const FISH_EYE = FISH_SUBPATHS[2]
+const FISH_FIN = FISH_SUBPATHS[3]
 
 /* Four short marks under the upper eye, angled slightly toward the tail fin. */
 const CHEEK_LINE_X = [50, 60, 70, 80]
@@ -28,7 +29,6 @@ function Fish({
   style,
   palette = 'pink-orange',
   fill,
-  stroke,
   rotate,
   children,
 }) {
@@ -36,7 +36,6 @@ function Fish({
   const gradientId = `${rawId}-fill`
   const paletteConfig = FISH_PALETTES[palette] ?? FISH_PALETTES['pink-orange']
   const fillValue = fill ?? `url(#${gradientId})`
-  const strokeValue = stroke ?? paletteConfig.stroke
 
   const svgStyle =
     rotate != null
@@ -71,19 +70,23 @@ function Fish({
         className="fish__background"
         d={FISH_SILHOUETTE}
         fill={fillValue}
-        stroke={strokeValue}
-        strokeWidth="4"
-        strokeLinejoin="round"
       />
 
-      {FISH_EYES.map((d, i) => (
+      {FISH_FIN && (
         <path
-          key={i}
+          className="fish__fin"
+          d={FISH_FIN}
+          fill={paletteConfig.fin}
+        />
+      )}
+
+      {FISH_EYE && (
+        <path
           className="fish__eye"
-          d={d}
+          d={FISH_EYE}
           fill="#000"
         />
-      ))}
+      )}
 
       <g className="fish__cheek-lines" aria-hidden="true">
         {CHEEK_LINE_X.map((x) => (
