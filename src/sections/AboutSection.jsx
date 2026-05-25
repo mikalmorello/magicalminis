@@ -65,9 +65,18 @@ const BLUE = { fill: '#d4ecf8', stroke: '#60b0e0' }
 /** Minimum gap between fish bounding boxes (px). */
 const FISH_MIN_GAP = 5
 
+/** Extra width applied to every fish; positions are nudged so gaps stay the same. */
+const FISH_SIZE_BONUS = 5
+const FISH_ASPECT = 150 / 293
+
 /** Offset within a school group; maintain at least FISH_MIN_GAP between fish. */
 function schoolFish({ color, size, x = 0, y = 0 }) {
-  return { ...color, size, x, y }
+  return {
+    ...color,
+    size: size + FISH_SIZE_BONUS,
+    x: x + (x > 0 ? FISH_SIZE_BONUS : 0),
+    y: y + (y > 0 ? FISH_SIZE_BONUS * FISH_ASPECT : 0),
+  }
 }
 
 const FISH_SCHOOLS = [
@@ -174,7 +183,7 @@ function AboutSection() {
                 top: fish.top,
                 left: fish.left,
                 right: fish.right,
-                width: fish.size,
+                width: fish.size + FISH_SIZE_BONUS,
               }}
             />
           ))}

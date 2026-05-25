@@ -8,16 +8,15 @@ import fishSvg from '../../assets/fish.svg?raw'
 const VIEWBOX = fishSvg.match(/viewBox="([^"]+)"/)?.[1] ?? '0 0 293 150'
 const FISH_PATH = fishSvg.match(/\bd="([^"]+)"/)?.[1] ?? ''
 
-/* Outer silhouette = solid fill background; remaining subpaths = eye/gill detail */
-const FISH_SILHOUETTE = FISH_PATH.match(/^M[^M]+/)?.[0] ?? FISH_PATH
-const FISH_DETAILS = FISH_PATH.slice(FISH_SILHOUETTE.length).trim()
+/* Subpaths: body silhouette, inner contour (unused), then eyes (see fish.svg). */
+const FISH_SUBPATHS = FISH_PATH.trim().split(/\s(?=M\s)/).map((p) => p.trim())
+const FISH_SILHOUETTE = FISH_SUBPATHS[0] ?? FISH_PATH
+const FISH_EYES = FISH_SUBPATHS.slice(2)
 
 function Fish({
   className,
   style,
   fill = 'var(--fish-fill, #fde8d4)',
-  stroke = 'var(--fish-stroke, #f0a060)',
-  strokeWidth = 4,
   rotate,
   children,
 }) {
@@ -39,21 +38,16 @@ function Fish({
         className="fish__background"
         d={FISH_SILHOUETTE}
         fill={fill}
-        stroke={stroke}
-        strokeWidth={strokeWidth}
-        strokeLinejoin="round"
       />
 
-      {FISH_DETAILS && (
+      {FISH_EYES.map((d, i) => (
         <path
-          className="fish__detail"
-          d={FISH_DETAILS}
-          fill="none"
-          stroke={stroke}
-          strokeWidth={strokeWidth * 0.7}
-          strokeLinejoin="round"
+          key={i}
+          className="fish__eye"
+          d={d}
+          fill="#000"
         />
-      )}
+      ))}
 
       {children && <g className="fish__extras">{children}</g>}
     </svg>
