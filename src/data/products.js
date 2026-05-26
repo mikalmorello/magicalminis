@@ -27,3 +27,7 @@ export function getProducts() {
     isNew: newestIds.has(product.id),
   }))
 }
+
+export function getProductById(id) {
+  return getProducts().find((product) => product.id === id)
+}

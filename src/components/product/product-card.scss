@@ -11,6 +11,23 @@
   box-shadow: var(--product-card-shadow);
   overflow: visible;
   color: var(--product-card-title-color);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.16);
+
+    .product-card__action {
+      transform: scale(1.08);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--pink-primary);
+    outline-offset: 3px;
+  }
 
   @media (min-width: 768px) {
     width: var(--product-card-width);
@@ -158,12 +175,10 @@
     height: 28px;
     border-radius: 50%;
     background: var(--product-card-action-bg);
-    border: none;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform 0.2s ease;
 
     .product-card--info-left & {
       bottom: 0.75rem;
@@ -173,10 +188,6 @@
     .product-card--info-right & {
       top: 0.75rem;
       right: 0.85rem;
-    }
-
-    &:hover {
-      transform: scale(1.08);
     }
   }
 
