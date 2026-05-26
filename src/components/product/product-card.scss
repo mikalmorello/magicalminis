@@ -38,6 +38,10 @@
     --product-card-title-color: var(--product-card-title-dark);
     --product-card-action-bg: var(--product-card-action-bg-dark);
     --product-card-action-arrow: var(--product-card-action-arrow-dark);
+
+    .product-card__squiggle {
+      filter: brightness(0) invert(1);
+    }
   }
 
   &--info-right {
@@ -102,49 +106,50 @@
   &__info {
     position: relative;
     z-index: 1;
+    font-family: var(--font-body);
     flex: 0 1 auto;
     max-width: 40%;
     min-width: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1rem 0.85rem;
+    padding: 1rem 1rem;
   }
 
   &__title {
-    font-family: var(--font-display);
-    font-size: clamp(0.75rem, 2vw, 0.95rem);
-    font-weight: 600;
+    font-size: clamp(1.75rem, 2vw, 0.95rem);
+    font-weight: 800;
     color: var(--product-card-title-color);
-    margin: 0 0 0.2rem;
+    margin: 0 0 0.25rem;
     text-transform: lowercase;
-    line-height: 1.2;
+    line-height: .95;
   }
 
   &__squiggle {
     display: block;
-    width: 48px;
-    height: 8px;
+    width: 60px;
+    height: auto;
+    aspect-ratio: 101 / 19;
     margin-bottom: 0.35rem;
-    color: var(--product-card-title-color);
+    object-fit: contain;
   }
 
   &__price {
-    font-family: var(--font-display);
-    font-weight: 700;
-    color: var(--text-dark);
+    font-weight: 800;
+    color: black;
     margin: 0;
     line-height: 1;
+    display: flex;
+    letter-spacing: -0.02em;
   }
 
   &__price-whole {
-    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-size: clamp(2.5rem, 3vw, 1.75rem);
   }
 
   &__price-cents {
-    font-size: clamp(0.65rem, 1.5vw, 0.85rem);
-    vertical-align: super;
-    line-height: 0;
+    font-size: clamp(1.35rem, 1.5vw, 0.85rem);
+    padding-top: 0.15rem;
   }
 
   &__action {
@@ -216,14 +221,6 @@
       flex: 0 0 var(--product-card-width-wide);
       height: var(--product-card-height);
       min-height: var(--product-card-height);
-    }
-
-    .product-card__info {
-      padding: 1.25rem 1rem;
-    }
-
-    .product-card__title {
-      font-size: clamp(0.85rem, 2.2vw, 1.05rem);
     }
   }
 }
