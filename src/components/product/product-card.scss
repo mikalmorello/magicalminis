@@ -9,7 +9,7 @@
   background: var(--product-card-bg);
   border-radius: 16px;
   box-shadow: var(--product-card-shadow);
-  overflow: hidden;
+  overflow: visible;
   color: var(--product-card-title-color);
 
   @media (min-width: 768px) {
@@ -46,24 +46,34 @@
     .product-card__info {
       padding-top: 2.5rem;
     }
+
+    .product-card__media {
+      border-radius: 16px 0 0 16px;
+    }
   }
 
   &--info-left {
     .product-card__info {
       padding-bottom: 2.5rem;
     }
+
+    .product-card__media {
+      border-radius: 0 16px 16px 0;
+    }
   }
 
   &__badge {
+    --product-card-badge-bleed: 20px;
+
     position: absolute;
-    top: 0.35rem;
-    right: 0.35rem;
-    z-index: 2;
-    display: grid;
-    place-items: center;
-    width: 3.75rem;
-    height: 3.5rem;
-    transform: rotate(12deg);
+    top: calc(-1 * var(--product-card-badge-bleed));
+    right: calc(-1 * var(--product-card-badge-bleed));
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5.5rem;
+    height: calc(5.5rem * 134 / 143);
     text-transform: lowercase;
     pointer-events: none;
   }
@@ -80,10 +90,13 @@
   &__badge-label {
     position: relative;
     z-index: 1;
+    padding-top: 8px;
     color: var(--white);
-    font-family: var(--font-display);
-    font-size: 0.65rem;
+    font-family: var(--font-burger);
+    font-size: 1.4rem;
     font-weight: 700;
+    line-height: 1;
+    text-align: center;
   }
 
   &__info {

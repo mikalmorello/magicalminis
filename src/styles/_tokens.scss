@@ -66,14 +66,14 @@
   --product-card-action-arrow-light: var(--white);
   --product-card-action-bg-dark: var(--white);
   --product-card-action-arrow-dark: var(--pink-primary);
-  --product-card-shadow: var(--card-shadow);
+  --product-card-shadow: 0 2px 6px rgb(0 0 0 / 0.12);
   --product-card-image-glow: radial-gradient(
     ellipse 72% 78% at 50% 50%,
     rgb(255 255 255 / 0.85) 0%,
     rgb(255 255 255 / 0.35) 42%,
     transparent 68%
   );
-  --product-grid-gap: 1.25rem;
+  --product-grid-gap: 1.45rem;
   --product-card-width: 280px;
   --product-card-width-wide: 520px;
   --product-card-height: 18.75rem; /* 300px */
