@@ -109,7 +109,7 @@ const FISH_SCHOOLS = [
       schoolFish({ id: 'top-right-2', palette: BLUE, size: 36, x: 48, y: 12 }),
       schoolFish({ id: 'top-right-3', palette: BLUE, size: 34, x: 94, y: 5 }),
       schoolFish({ id: 'top-right-4', palette: ORANGE, size: 32, x: 64, y: 44 }),
-      schoolFish({ id: 'top-right-5', palette: ORANGE, size: 32, x: -20, y: 30 }),
+      schoolFish({ id: 'top-right-5', palette: ORANGE, size: 32, x: 0, y: 30 }),
     ],
   },
   {
@@ -125,7 +125,7 @@ const FISH_SCHOOLS = [
   {
     id: 'bottom-right',
     top: '91%',
-    right: '-3%',
+    right: '2%',
     fish: [
       schoolFish({ id: 'bottom-right-1', palette: BLUE, size: 36 }),
       schoolFish({ id: 'bottom-right-2', palette: BLUE, size: 32, x: 44, y: 16 }),
@@ -145,57 +145,59 @@ function AboutSection() {
   return (
     <section className="about-section" id="about" aria-labelledby="about-heading">
       <WaveBackground />
-      <div className="about-section__inner">
-        <div className="about-section__fish-school" aria-hidden="true">
+      <div className="about-section__fish-school" aria-hidden="true">
+        <div className="about-section__fish-stage">
           {FISH_SCHOOLS.map((school) => (
-            <div
-              key={school.id}
-              className={[
-                'about-section__fish-group',
-                `about-section__fish-group-${school.id}`,
-              ].join(' ')}
-              style={{
-                top: school.top,
-                left: school.left,
-                right: school.right,
-              }}
-            >
-              {school.fish.map((fish) => (
-                <Fish
-                  key={fish.id}
-                  id={fish.id}
-                  className="about-section__fish"
-                  instanceClassName={`about-section__fish-${fish.id}`}
-                  palette={fish.palette}
-                  {...(fish.rotate != null && { rotate: fish.rotate })}
-                  style={{
-                    top: `${fish.y}px`,
-                    left: `${fish.x}px`,
-                    width: fish.size,
-                  }}
-                />
-              ))}
-            </div>
-          ))}
+          <div
+            key={school.id}
+            className={[
+              'about-section__fish-group',
+              `about-section__fish-group-${school.id}`,
+            ].join(' ')}
+            style={{
+              top: school.top,
+              left: school.left,
+              right: school.right,
+            }}
+          >
+            {school.fish.map((fish) => (
+              <Fish
+                key={fish.id}
+                id={fish.id}
+                className="about-section__fish"
+                instanceClassName={`about-section__fish-${fish.id}`}
+                palette={fish.palette}
+                {...(fish.rotate != null && { rotate: fish.rotate })}
+                style={{
+                  top: `${fish.y}px`,
+                  left: `${fish.x}px`,
+                  width: fish.size,
+                }}
+              />
+            ))}
+          </div>
+        ))}
 
-          {FISH_STRAGGLERS.map((fish) => (
-            <Fish
-              key={fish.id}
-              id={fish.id}
-              className="about-section__fish about-section__fish--lone"
-              instanceClassName={`about-section__fish-${fish.id}`}
-              palette={fish.palette}
-              {...(fish.rotate != null && { rotate: fish.rotate })}
-              style={{
-                top: fish.top,
-                left: fish.left,
-                right: fish.right,
-                width: fish.size + FISH_SIZE_BONUS,
-              }}
-            />
-          ))}
+        {FISH_STRAGGLERS.map((fish) => (
+          <Fish
+            key={fish.id}
+            id={fish.id}
+            className="about-section__fish about-section__fish--lone"
+            instanceClassName={`about-section__fish-${fish.id}`}
+            palette={fish.palette}
+            {...(fish.rotate != null && { rotate: fish.rotate })}
+            style={{
+              top: fish.top,
+              left: fish.left,
+              right: fish.right,
+              width: fish.size + FISH_SIZE_BONUS,
+            }}
+          />
+        ))}
         </div>
+      </div>
 
+      <div className="about-section__inner">
         <div className="about-section__copy">
           <h2 id="about-heading" className="about-section__heading">
             About Magical Minis

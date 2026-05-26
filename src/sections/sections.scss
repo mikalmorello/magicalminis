@@ -55,7 +55,14 @@
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    overflow: visible;
+    overflow-x: clip;
+  }
+
+  &__fish-stage {
+    position: relative;
+    max-width: var(--max-content-width);
+    height: 100%;
+    margin: 0 auto;
   }
 
   &__fish-group {
