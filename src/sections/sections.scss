@@ -74,6 +74,24 @@
     pointer-events: none;
   }
 
+  /* Top schools sit under the wave divider (z-index 0 vs --z-waves). Nudge
+     them down on small screens only — desktop positions stay as authored.
+     Offset tracks --wave-strip-height so it stays correct when the wave
+     shrinks below 600px. */
+  @media (max-width: 767px) {
+    &__fish-group-top-right {
+      transform: translateY(calc(var(--wave-strip-height) - var(--wave-overlap) + 1rem));
+    }
+
+    &__fish-group-mid-right {
+      transform: translateY(calc((var(--wave-strip-height) - var(--wave-overlap)) * 0.25));
+    }
+
+    &__fish-upper-left {
+      transform: translateY(calc((var(--wave-strip-height) - var(--wave-overlap)) * 0.35));
+    }
+  }
+
   &__ribbon,
   &__cards {
     position: relative;
