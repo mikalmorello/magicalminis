@@ -54,12 +54,16 @@ function TeamCard({ name, photo, decorations = [], style }) {
   const photoStyle = photo ? { backgroundImage: `url(${photo})` } : undefined
 
   return (
-    <article className="team-card" style={style}>
+    <button
+      type="button"
+      className="team-card"
+      style={style}
+      aria-label={name}
+    >
       <div className="team-card__media">
         <div
           className="team-card__photo"
-          role="img"
-          aria-label={`Photo of ${name}`}
+          aria-hidden="true"
           style={photoStyle}
         />
         {decorations.length > 0 && (
@@ -71,7 +75,7 @@ function TeamCard({ name, photo, decorations = [], style }) {
         )}
       </div>
       <span className="team-card__name">{name}</span>
-    </article>
+    </button>
   )
 }
 

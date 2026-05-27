@@ -17,6 +17,10 @@
   display: flex;
   flex-direction: column;
   width: var(--team-card-width);
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  text-align: inherit;
   background: var(--team-card-bg);
   border-radius:
     var(--team-card-dome-radius)
@@ -32,6 +36,11 @@
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--team-card-name-color);
+    outline-offset: 3px;
   }
 
   &__media {
