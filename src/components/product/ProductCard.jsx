@@ -31,7 +31,11 @@ function ProductCard({ id, name, price, image, variant, alignment, size, isNew }
           <span className="product-card__price-cents">.{cents}</span>
         </p>
         <span className="product-card__action" aria-hidden="true">
-          <span className="product-card__arrow" />
+          <span className="product-card__arrow">
+            <svg viewBox="6 6 12 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M12 6.65625L7.19531 11.4609L8.25 12.5391L11.25 9.53906V17.25H12.75V9.53906L15.75 12.5391L16.8047 11.4609L12 6.65625Z" fill="currentColor" />
+            </svg>
+          </span>
         </span>
       </div>
       <div className="product-card__media">

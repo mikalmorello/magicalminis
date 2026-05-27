@@ -193,11 +193,16 @@
 
   &__arrow {
     display: block;
-    width: 8px;
-    height: 8px;
-    border-top: 2px solid var(--product-card-action-arrow);
-    border-right: 2px solid var(--product-card-action-arrow);
-    transform: rotate(45deg) translate(-1px, 1px);
+    width: 12px;
+    height: 12px;
+    color: var(--product-card-action-arrow);
+    transform: rotate(45deg);
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__media {
