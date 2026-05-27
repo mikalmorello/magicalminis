@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import SiteHeader from '../components/layout/SiteHeader'
-import HeroScene from '../components/hero/HeroScene'
-import AboutSection from '../sections/AboutSection'
-import ProductSection from '../sections/ProductSection'
+import HeroSection from '../sections/hero/HeroSection'
+import AboutSection from '../sections/about/AboutSection'
+import ProductSection from '../sections/product/ProductSection'
 import './home.scss'
 
 function Home() {
@@ -18,9 +18,7 @@ function Home() {
   return (
     <div className="home">
       <SiteHeader />
-      <div className="home__hero-wrap">
-        <HeroScene />
-      </div>
+      <HeroSection />
       <AboutSection />
       <ProductSection />
     </div>

@@ -4,7 +4,7 @@
   initial-value: #f7d5ef;
 }
 
-.hero-scene {
+.hero-section {
   position: relative;
   width: 100%;
   height: var(--hero-scene-height);
@@ -20,7 +20,7 @@
   background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 100%);
 }
 
-.hero-scene__clouds {
+.hero-section__clouds {
   position: absolute;
   inset: 0;
   z-index: var(--z-cloud);

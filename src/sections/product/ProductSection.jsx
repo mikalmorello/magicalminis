@@ -1,6 +1,6 @@
-import ProductCard from '../components/product/ProductCard'
-import { getProducts } from '../data/products'
-import './sections.scss'
+import ProductCard from '../../components/product/ProductCard'
+import { getProducts } from '../../data/products'
+import './product-section.scss'
 
 const products = getProducts()
 

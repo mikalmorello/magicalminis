@@ -1,10 +1,10 @@
-import WaveBackground from '../components/wave/WaveBackground'
-import TeamCard from '../components/team/TeamCard'
-import Fish from '../components/about/Fish'
-import alliePhoto from '../assets/team/allie.png'
-import jackPhoto from '../assets/team/jack.png'
-import maiaPhoto from '../assets/team/maia.png'
-import './sections.scss'
+import WaveBackground from '../../components/wave/WaveBackground'
+import TeamCard from '../../components/team/TeamCard'
+import Fish from '../../components/about/Fish'
+import alliePhoto from '../../assets/team/allie.png'
+import jackPhoto from '../../assets/team/jack.png'
+import maiaPhoto from '../../assets/team/maia.png'
+import './about-section.scss'
 
 /*
   Per-card data lifted straight from the design:
