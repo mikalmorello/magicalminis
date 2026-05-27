@@ -35,7 +35,7 @@ function Decoration({
   const Component = SHAPES[shape] ?? Star
   return (
     <Component
-      className="team-card__decoration"
+      className={`team-card__decoration team-card__decoration--${shape}`}
       color={color}
       style={{
         top,
@@ -44,7 +44,7 @@ function Decoration({
         left,
         width: size,
         height: size,
-        transform: rotate ? `rotate(${rotate})` : undefined,
+        '--deco-rotate': rotate ?? '0deg',
       }}
     />
   )

@@ -64,6 +64,32 @@
   &__decoration {
     position: absolute;
     /* size + top/right come from inline styles set per decoration */
+    transform: rotate(var(--deco-rotate, 0deg));
+    transition: transform 0.35s ease;
+
+    .team-card:hover &--heart:nth-child(odd) {
+      transform: rotate(calc(var(--deco-rotate, 0deg) + 12deg));
+    }
+
+    .team-card:hover &--heart:nth-child(even) {
+      transform: rotate(calc(var(--deco-rotate, 0deg) - 10deg));
+    }
+
+    .team-card:hover &--star:nth-child(1) {
+      transform: rotate(var(--deco-rotate, 0deg)) translate(-2px, -5px);
+    }
+
+    .team-card:hover &--star:nth-child(2) {
+      transform: rotate(var(--deco-rotate, 0deg)) translate(5px, 0);
+    }
+
+    .team-card:hover &--star:nth-child(3) {
+      transform: rotate(var(--deco-rotate, 0deg)) translate(-2px, 5px);
+    }
+
+    .team-card:hover &--halo {
+      transform: rotate(var(--deco-rotate, 0deg)) translateY(-6px);
+    }
   }
 
   &__name {
