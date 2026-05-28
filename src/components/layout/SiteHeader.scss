@@ -56,6 +56,12 @@
     line-height: 1;
     color: var(--pink-primary);
     font-family: var(--font-burger);
+    transform-origin: center top;
+    transition: transform 0.3s ease;
+  }
+
+  &--scrolled &__logo {
+    transform: scale(0.88);
   }
 
   &__logo-magical {
