@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import SiteHeader from '../components/layout/SiteHeader'
+import ShippingSection from '../sections/shipping/ShippingSection'
 import HeroSection from '../sections/hero/HeroSection'
 import AboutSection from '../sections/about/AboutSection'
 import ProductSection from '../sections/product/ProductSection'
@@ -19,7 +20,10 @@ function Home() {
   return (
     <div className="home">
       <SiteHeader />
-      <HeroSection />
+      <div className="home-hero">
+        <HeroSection />
+        <ShippingSection />
+      </div>
       <AboutSection />
       <ProductSection />
       <FooterSection />

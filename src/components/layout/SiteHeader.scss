@@ -8,7 +8,6 @@
   pointer-events: none;
 
   &__bar,
-  &__nav,
   button,
   a {
     pointer-events: auto;
@@ -65,63 +64,16 @@
     font-style: italic;
   }
 
-  &__actions {
-    grid-column: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.35rem;
-    justify-self: end;
-  }
-
-  &__shipping {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    background: var(--white);
-    border: 1.5px solid var(--pink-light);
-    border-radius: 999px;
-    padding: 0.2rem 0.5rem;
-    font-size: 0.55rem;
-    color: var(--pink-primary);
-    font-family: var(--font-body);
-    max-width: 140px;
-    line-height: 1.2;
-  }
-
-  &__shipping-icon {
-    flex-shrink: 0;
-    width: 14px;
-    height: 10px;
-    background: var(--pink-primary);
-    border-radius: 2px;
-    position: relative;
-
-    &::before {
-      content: '';
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      border: 1.5px solid var(--pink-primary);
-      border-radius: 50%;
-      background: transparent;
-      right: -4px;
-      top: 2px;
-    }
-  }
-
-  &__shipping-text strong {
-    font-weight: 700;
-  }
-
   &__menu-btn {
+    grid-column: 3;
+    justify-self: end;
     background: none;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
+    width: 32px;
     height: 32px;
     padding: 0;
   }
@@ -130,7 +82,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
+    width: 26px;
     height: 22px;
   }
 
@@ -157,50 +109,7 @@
     }
   }
 
-  &__nav {
-    position: absolute;
-    top: 100%;
-    right: 1rem;
-    background: var(--white);
-    border: 2px solid var(--pink-light);
-    border-radius: 12px;
-    width: 180px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    z-index: var(--z-nav-menu);
-
-    &--open {
-      max-height: 200px;
-    }
-  }
-
-  &__nav-link {
-    display: block;
-    padding: 0.85rem 1rem;
-    color: var(--pink-primary);
-    text-decoration: none;
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-bottom: 1px solid var(--pink-light);
-    transition: background-color 0.2s ease;
-
-    &:hover {
-      background-color: rgba(232, 120, 160, 0.1);
-    }
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
   @media (max-width: 600px) {
-    &__shipping {
-      display: none;
-    }
-
     &__logo-magical {
       font-size: 0.9rem;
     }
@@ -211,10 +120,8 @@
   }
 
   @media (min-width: 768px) {
-    &__shipping {
-      max-width: 180px;
-      font-size: 0.6rem;
-      padding: 0.25rem 0.65rem;
+    &__logo-magical {
+      font-size: 2.5rem;
     }
   }
 }

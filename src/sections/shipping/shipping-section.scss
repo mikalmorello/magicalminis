@@ -1,0 +1,70 @@
+.shipping-section {
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  z-index: calc(var(--z-header) - 1);
+  padding: 0.35rem var(--section-padding) 0;
+  pointer-events: none;
+
+  &__inner {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__banner {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+    background: var(--white);
+    border: 1.5px solid var(--pink-light);
+    border-radius: 999px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.55rem;
+    color: var(--pink-primary);
+    font-family: var(--font-body);
+    max-width: 140px;
+    line-height: 1.2;
+    pointer-events: auto;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 14px;
+    height: 10px;
+    background: var(--pink-primary);
+    border-radius: 2px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border: 1.5px solid var(--pink-primary);
+      border-radius: 50%;
+      background: transparent;
+      right: -4px;
+      top: 2px;
+    }
+  }
+
+  &__text strong {
+    font-weight: 700;
+  }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    &__banner {
+      max-width: 180px;
+      font-size: 0.6rem;
+      padding: 0.25rem 0.65rem;
+    }
+  }
+}
