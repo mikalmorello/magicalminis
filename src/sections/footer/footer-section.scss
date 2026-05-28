@@ -1,8 +1,70 @@
 .site-footer {
-  background: var(--sand-footer);
+  position: relative;
+  z-index: 4;
   padding: 3.5rem var(--section-padding);
 
+  &__sand {
+    position: absolute;
+    inset: calc(-1 * var(--sand-footer-edge-height)) 0 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: var(--sand-footer);
+    /*
+      Wavy top edge where footer sand meets the product shelf above.
+      Sits above the product section (z-index 4) so the transition is visible.
+      Softer than the product top edge (~14px dips vs ~28px).
+    */
+    clip-path: polygon(
+      0 calc(var(--sand-footer-edge-height) - 3px),
+      2.5% calc(var(--sand-footer-edge-height) - 4px),
+      5% calc(var(--sand-footer-edge-height) - 6px),
+      7.5% calc(var(--sand-footer-edge-height) - 8px),
+      10% calc(var(--sand-footer-edge-height) - 10px),
+      12.5% calc(var(--sand-footer-edge-height) - 8px),
+      15% calc(var(--sand-footer-edge-height) - 6px),
+      17.5% calc(var(--sand-footer-edge-height) - 5px),
+      20% calc(var(--sand-footer-edge-height) - 5px),
+      22.5% calc(var(--sand-footer-edge-height) - 7px),
+      25% calc(var(--sand-footer-edge-height) - 9px),
+      27.5% calc(var(--sand-footer-edge-height) - 11px),
+      30% calc(var(--sand-footer-edge-height) - 13px),
+      32.5% calc(var(--sand-footer-edge-height) - 11px),
+      35% calc(var(--sand-footer-edge-height) - 9px),
+      37.5% calc(var(--sand-footer-edge-height) - 7px),
+      40% calc(var(--sand-footer-edge-height) - 6px),
+      42.5% calc(var(--sand-footer-edge-height) - 7px),
+      45% calc(var(--sand-footer-edge-height) - 8px),
+      47.5% calc(var(--sand-footer-edge-height) - 10px),
+      50% calc(var(--sand-footer-edge-height) - 14px),
+      52.5% calc(var(--sand-footer-edge-height) - 12px),
+      55% calc(var(--sand-footer-edge-height) - 10px),
+      57.5% calc(var(--sand-footer-edge-height) - 8px),
+      60% calc(var(--sand-footer-edge-height) - 7px),
+      62.5% calc(var(--sand-footer-edge-height) - 8px),
+      65% calc(var(--sand-footer-edge-height) - 9px),
+      67.5% calc(var(--sand-footer-edge-height) - 10px),
+      70% calc(var(--sand-footer-edge-height) - 12px),
+      72.5% calc(var(--sand-footer-edge-height) - 10px),
+      75% calc(var(--sand-footer-edge-height) - 8px),
+      77.5% calc(var(--sand-footer-edge-height) - 7px),
+      80% calc(var(--sand-footer-edge-height) - 6px),
+      82.5% calc(var(--sand-footer-edge-height) - 7px),
+      85% calc(var(--sand-footer-edge-height) - 8px),
+      87.5% calc(var(--sand-footer-edge-height) - 9px),
+      90% calc(var(--sand-footer-edge-height) - 9px),
+      92.5% calc(var(--sand-footer-edge-height) - 7px),
+      95% calc(var(--sand-footer-edge-height) - 6px),
+      97.5% calc(var(--sand-footer-edge-height) - 4px),
+      100% calc(var(--sand-footer-edge-height) - 4px),
+      100% 100%,
+      0 100%
+    );
+  }
+
   &__inner {
+    position: relative;
+    z-index: 1;
     max-width: var(--max-content-width);
     margin: 0 auto;
     text-align: center;
