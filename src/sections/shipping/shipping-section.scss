@@ -3,7 +3,7 @@
   top: var(--header-height);
   left: 0;
   right: 0;
-  z-index: calc(var(--z-header) - 1);
+  z-index: 8;
   padding: 0.35rem var(--section-padding) 0;
   pointer-events: none;
 

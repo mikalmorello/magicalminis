@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import SkyBackground from './SkyBackground'
 import Cloud from './Cloud'
 import Rainbow from './Rainbow'
@@ -17,6 +17,10 @@ const CLOUDS = [
 
 function HeroSection() {
   const [skyBottom, setSkyBottom] = useState(DEFAULT_SKY_BOTTOM)
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--sky-bottom', skyBottom)
+  }, [skyBottom])
 
   return (
     <section
