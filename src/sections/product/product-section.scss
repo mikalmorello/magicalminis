@@ -1,23 +1,41 @@
 .product-section {
-  /* Wood-grain "shelf" backdrop. The source tile (500×500, seamless) is
-     pre-rotated 90° at build time so the grain runs horizontally — doing
-     the rotation in the file (rather than via CSS `transform`) keeps the
-     repeat seamless without needing an oversized rotated pseudo-element. */
+  /* Sandy shelf backdrop — CSS grain via layered repeating conic gradients. */
   position: relative;
   z-index: 3;
-  background: var(--beach-light) url('/textures/wood-horizontal.png') repeat;
-  background-size: 500px 500px;
+  background: var(--sand-base);
   padding: 2rem var(--section-padding) 4rem;
 
-  /* Upward-cast drop shadow at the wood's top edge, falling onto the blue
-     about-section above. Same shape as the team-card shadow (--card-shadow)
-     but with reduced opacity and a touch more blur so it reads as a soft
-     ambient shelf-edge shadow rather than a hard card lift. Side/bottom
-     blur leaks aren't visible because the section spans the full viewport
-     width and is the last block on the page. */
-  box-shadow: 0 -3px 12px rgb(0 0 0 / 0.07);
+  &__sand {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-conic-gradient(rgb(0 0 0 / 0.05) 0.000001%, #fff0 .00005%, #fff0 .00035%, #fff0 .00005%),
+        repeating-conic-gradient(rgb(255 255 255 / 0.45) 0.00002%, #fff0 .00008%, #fff0 .0008%, #fff0 .00008%);
+    }
+
+    &::before {
+      opacity: 0.75;
+      filter: blur(1px);
+    }
+
+    &::after {
+      transform: rotate(180deg) scale(5);
+      transform-origin: center;
+    }
+  }
 
   &__layout {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -30,9 +48,17 @@
     }
   }
 
+  /* Upward-cast drop shadow at the shelf's top edge, falling onto the blue
+     about-section above. Same shape as the team-card shadow (--card-shadow)
+     but with reduced opacity and a touch more blur so it reads as a soft
+     ambient shelf-edge shadow rather than a hard card lift. Side/bottom
+     blur leaks aren't visible because the section spans the full viewport
+     width and is the last block on the page. */
+  box-shadow: 0 -3px 12px rgb(0 0 0 / 0.07);
+
   &__products {
     position: relative;
-    z-index: 5;
+    z-index: 1;
     width: 100%;
     /* Pull the first row of cards up over the about section. */
     margin-top: -75px;
@@ -43,7 +69,7 @@
     flex-direction: column;
     align-items: flex-end;
     gap: 0.5rem;
-    /* Keep the heart + filters on the wood shelf, not in the overlap zone. */
+    /* Keep the heart + filters on the sand shelf, not in the overlap zone. */
     padding-top: 50px;
   }
 

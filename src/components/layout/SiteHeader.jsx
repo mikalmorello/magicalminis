@@ -34,9 +34,11 @@ function SiteHeader() {
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
           >
-            <span className={`site-header__hamburger-line ${isMenuOpen ? 'open' : ''}`} />
-            <span className={`site-header__hamburger-line ${isMenuOpen ? 'open' : ''}`} />
-            <span className={`site-header__hamburger-line ${isMenuOpen ? 'open' : ''}`} />
+            <span className="site-header__menu-icon" aria-hidden="true">
+              <span className={`site-header__menu-line ${isMenuOpen ? 'site-header__menu-line--open' : ''}`} />
+              <span className={`site-header__menu-line ${isMenuOpen ? 'site-header__menu-line--open' : ''}`} />
+              <span className={`site-header__menu-line ${isMenuOpen ? 'site-header__menu-line--open' : ''}`} />
+            </span>
           </button>
         </div>
       </div>

@@ -7,6 +7,7 @@ const products = getProducts()
 function ProductSection() {
   return (
     <section className="product-section" id="products" aria-labelledby="products-heading">
+      <div className="product-section__sand" aria-hidden="true" />
       <div className="product-section__layout">
         <div className="product-section__products">
           <div className="product-section__grid">

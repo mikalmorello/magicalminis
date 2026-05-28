@@ -4,6 +4,7 @@ import SiteHeader from '../components/layout/SiteHeader'
 import HeroSection from '../sections/hero/HeroSection'
 import AboutSection from '../sections/about/AboutSection'
 import ProductSection from '../sections/product/ProductSection'
+import FooterSection from '../sections/footer/FooterSection'
 import './home.scss'
 
 function Home() {
@@ -21,6 +22,7 @@ function Home() {
       <HeroSection />
       <AboutSection />
       <ProductSection />
+      <FooterSection />
     </div>
   )
 }
