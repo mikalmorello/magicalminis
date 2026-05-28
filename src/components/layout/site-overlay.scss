@@ -74,6 +74,17 @@
     text-align: center;
   }
 
+  &__cart-wave {
+    display: block;
+    width: min(16rem, 70vw);
+    height: 4rem;
+    margin: 2rem auto 0;
+    background-color: var(--pink-primary);
+    mask: url('../../assets/water-solid.svg') no-repeat center / contain;
+    -webkit-mask: url('../../assets/water-solid.svg') no-repeat center / contain;
+    opacity: 0.85;
+  }
+
   &__cart-title {
     margin: 0 0 1rem;
     font-family: var(--font-burger);

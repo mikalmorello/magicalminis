@@ -51,6 +51,7 @@ function SiteOverlay({ panel, onClose }) {
           <div className="site-overlay__cart">
             <h2 className="site-overlay__cart-title">Your cart</h2>
             <p className="site-overlay__cart-empty">Nothing is currently in your cart.</p>
+            <span className="site-overlay__cart-wave" aria-hidden="true" />
           </div>
         </div>
       </div>
