@@ -1,7 +1,7 @@
 .cloud {
   position: absolute;
-  width: var(--cloud-width);
-  height: var(--cloud-height);
+  width: var(--cloud-width, 200px);
+  height: var(--cloud-height, 84px);
 
   &:hover {
     --drift-speed: 8s;
@@ -24,43 +24,304 @@
     background: var(--white);
     border-radius: 50%;
     opacity: 0.95;
+  }
 
-    &--1 {
-      width: 74px;
-      height: 74px;
-      bottom: 0;
+  /* Default puff layout (cloud--1 baseline) */
+  &__puff--1 {
+    width: 74px;
+    height: 74px;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__puff--2 {
+    width: 93px;
+    height: 93px;
+    bottom: 6px;
+    left: 47px;
+    opacity: 1;
+  }
+
+  &__puff--3 {
+    width: 80px;
+    height: 80px;
+    bottom: 0;
+    left: 96px;
+  }
+
+  &__puff--4 {
+    width: 60px;
+    height: 60px;
+    bottom: 12px;
+    left: 136px;
+    opacity: 0.9;
+  }
+
+  &__puff--5 {
+    width: 47px;
+    height: 47px;
+    bottom: 18px;
+    left: 24px;
+    opacity: 0.85;
+  }
+
+  &__puff--6 {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  /* Medium classic — slightly asymmetric */
+  &--1 {
+    --cloud-width: 210px;
+    --cloud-height: 86px;
+
+    .cloud__puff--1 {
+      width: 68px;
+      height: 68px;
+      left: 4px;
+    }
+
+    .cloud__puff--2 {
+      width: 88px;
+      height: 88px;
+      left: 42px;
+      bottom: 4px;
+    }
+
+    .cloud__puff--3 {
+      width: 72px;
+      height: 72px;
+      left: 98px;
+    }
+
+    .cloud__puff--4 {
+      width: 52px;
+      height: 52px;
+      left: 142px;
+      bottom: 10px;
+    }
+
+    .cloud__puff--5 {
+      width: 40px;
+      height: 40px;
+      left: 18px;
+      bottom: 22px;
+    }
+  }
+
+  /* XL billowy — largest shape */
+  &--2 {
+    --cloud-width: 290px;
+    --cloud-height: 118px;
+
+    .cloud__puff--1 {
+      width: 102px;
+      height: 102px;
       left: 0;
     }
 
-    &--2 {
-      width: 93px;
-      height: 93px;
-      bottom: 6px;
-      left: 47px;
-      opacity: 1;
+    .cloud__puff--2 {
+      width: 124px;
+      height: 124px;
+      left: 58px;
+      bottom: 8px;
     }
 
-    &--3 {
-      width: 80px;
-      height: 80px;
+    .cloud__puff--3 {
+      width: 108px;
+      height: 108px;
+      left: 132px;
       bottom: 0;
-      left: 96px;
     }
 
-    &--4 {
-      width: 60px;
-      height: 60px;
+    .cloud__puff--4 {
+      width: 78px;
+      height: 78px;
+      left: 198px;
+      bottom: 14px;
+    }
+
+    .cloud__puff--5 {
+      width: 64px;
+      height: 64px;
+      left: 28px;
+      bottom: 28px;
+    }
+  }
+
+  /* Small round puff */
+  &--3 {
+    --cloud-width: 130px;
+    --cloud-height: 72px;
+
+    .cloud__puff--1 {
+      width: 54px;
+      height: 54px;
+      left: 0;
+    }
+
+    .cloud__puff--2 {
+      width: 68px;
+      height: 68px;
+      left: 28px;
+      bottom: 8px;
+    }
+
+    .cloud__puff--3 {
+      width: 50px;
+      height: 50px;
+      left: 72px;
+      bottom: 2px;
+    }
+
+    .cloud__puff--4 {
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+
+    .cloud__puff--5 {
+      width: 36px;
+      height: 36px;
+      left: 12px;
+      bottom: 16px;
+      opacity: 0.8;
+    }
+  }
+
+  /* Wide mellow — broad silhouette, natural puff heights */
+  &--4 {
+    --cloud-width: 250px;
+    --cloud-height: 92px;
+
+    .cloud__puff--1 {
+      width: 70px;
+      height: 70px;
+      left: 0;
+      bottom: 0;
+    }
+
+    .cloud__puff--2 {
+      width: 90px;
+      height: 90px;
+      left: 48px;
+      bottom: 16px;
+    }
+
+    .cloud__puff--3 {
+      width: 78px;
+      height: 78px;
+      left: 118px;
+      bottom: 2px;
+    }
+
+    .cloud__puff--4 {
+      width: 58px;
+      height: 58px;
+      left: 178px;
       bottom: 12px;
-      left: 136px;
-      opacity: 0.9;
     }
 
-    &--5 {
-      width: 47px;
-      height: 47px;
+    .cloud__puff--5 {
+      width: 46px;
+      height: 46px;
+      left: 32px;
+      bottom: 26px;
+      opacity: 0.88;
+    }
+
+    .cloud__puff--6 {
+      width: 44px;
+      height: 44px;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      opacity: 0.92;
+    }
+  }
+
+  /* Tall cumulus stack */
+  &--5 {
+    --cloud-width: 230px;
+    --cloud-height: 108px;
+
+    .cloud__puff--1 {
+      width: 82px;
+      height: 82px;
+      left: 8px;
+      bottom: 0;
+    }
+
+    .cloud__puff--2 {
+      width: 96px;
+      height: 96px;
+      left: 52px;
       bottom: 18px;
-      left: 24px;
-      opacity: 0.85;
+    }
+
+    .cloud__puff--3 {
+      width: 74px;
+      height: 74px;
+      left: 118px;
+      bottom: 4px;
+    }
+
+    .cloud__puff--4 {
+      width: 58px;
+      height: 58px;
+      left: 158px;
+      bottom: 20px;
+    }
+
+    .cloud__puff--5 {
+      width: 48px;
+      height: 48px;
+      left: 34px;
+      bottom: 36px;
+      opacity: 0.88;
+    }
+  }
+
+  /* Large asymmetric drift */
+  &--6 {
+    --cloud-width: 270px;
+    --cloud-height: 102px;
+
+    .cloud__puff--1 {
+      width: 88px;
+      height: 88px;
+      left: 0;
+      bottom: 4px;
+    }
+
+    .cloud__puff--2 {
+      width: 72px;
+      height: 72px;
+      left: 62px;
+      bottom: 0;
+    }
+
+    .cloud__puff--3 {
+      width: 110px;
+      height: 110px;
+      left: 108px;
+      bottom: 10px;
+    }
+
+    .cloud__puff--4 {
+      width: 68px;
+      height: 68px;
+      left: 188px;
+      bottom: 0;
+    }
+
+    .cloud__puff--5 {
+      width: 52px;
+      height: 52px;
+      left: 22px;
+      bottom: 24px;
+      opacity: 0.82;
     }
   }
 }

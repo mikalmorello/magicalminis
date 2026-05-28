@@ -7,6 +7,7 @@ function Cloud({ className = '', style = {} }) {
         <span className="cloud__puff cloud__puff--3" />
         <span className="cloud__puff cloud__puff--4" />
         <span className="cloud__puff cloud__puff--5" />
+        <span className="cloud__puff cloud__puff--6" />
       </div>
     </div>
   )

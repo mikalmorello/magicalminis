@@ -24,15 +24,15 @@
     align-items: center;
     justify-content: center;
     margin-right: 2rem;
-    min-width: 150px;
-    min-height: 58px;
-    padding: 0.35rem 0.85rem 0.25rem;
+    min-width: 180px;
+    min-height: 68px;
+    padding: 0.5rem 1rem 0.35rem;
     pointer-events: auto;
 
     @media (min-width: 768px) {
-      min-width: 180px;
-      min-height: 64px;
-      padding: 0.45rem 1rem 0.3rem;
+      min-width: 220px;
+      min-height: 76px;
+      padding: 0.55rem 1.15rem 0.4rem;
     }
   }
 
@@ -40,7 +40,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -52%);
-    --cloud-scale: 0.74;
+    --cloud-scale: 1;
     pointer-events: none;
 
     .cloud__drift {
@@ -48,7 +48,7 @@
     }
 
     @media (min-width: 768px) {
-      --cloud-scale: 0.84;
+      --cloud-scale: 1.15;
     }
   }
 
