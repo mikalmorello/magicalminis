@@ -2,15 +2,101 @@
   /* Sandy shelf backdrop — CSS grain via layered repeating conic gradients. */
   position: relative;
   z-index: 3;
-  background: var(--sand-base);
   padding: 2rem var(--section-padding) 4rem;
 
   &__sand {
     position: absolute;
-    inset: 0;
+    inset: calc(-1 * var(--sand-edge-height)) 0 0;
     z-index: 0;
     overflow: hidden;
     pointer-events: none;
+    background: var(--sand-base);
+    /* Same uneven dune profile as before — extra points smooth each bend. */
+    clip-path: polygon(
+      0 calc(var(--sand-edge-height) - 4px),
+      1% calc(var(--sand-edge-height) - 7.5px),
+      2% calc(var(--sand-edge-height) - 11px),
+      3% calc(var(--sand-edge-height) - 14.5px),
+      4% calc(var(--sand-edge-height) - 18px),
+      5.25% calc(var(--sand-edge-height) - 15px),
+      6.5% calc(var(--sand-edge-height) - 12px),
+      7.75% calc(var(--sand-edge-height) - 9px),
+      9% calc(var(--sand-edge-height) - 6px),
+      10.25% calc(var(--sand-edge-height) - 10px),
+      11.5% calc(var(--sand-edge-height) - 14px),
+      12.75% calc(var(--sand-edge-height) - 18px),
+      14% calc(var(--sand-edge-height) - 22px),
+      15.25% calc(var(--sand-edge-height) - 18px),
+      16.5% calc(var(--sand-edge-height) - 14px),
+      17.75% calc(var(--sand-edge-height) - 10px),
+      19% calc(var(--sand-edge-height) - 8px),
+      20.25% calc(var(--sand-edge-height) - 12px),
+      21.5% calc(var(--sand-edge-height) - 16px),
+      22.75% calc(var(--sand-edge-height) - 20px),
+      24% calc(var(--sand-edge-height) - 20px),
+      25.25% calc(var(--sand-edge-height) - 16px),
+      26.5% calc(var(--sand-edge-height) - 12px),
+      27.75% calc(var(--sand-edge-height) - 10px),
+      29% calc(var(--sand-edge-height) - 10px),
+      30.25% calc(var(--sand-edge-height) - 14px),
+      31.5% calc(var(--sand-edge-height) - 18px),
+      32.75% calc(var(--sand-edge-height) - 22px),
+      34% calc(var(--sand-edge-height) - 24px),
+      35.25% calc(var(--sand-edge-height) - 20px),
+      36.5% calc(var(--sand-edge-height) - 16px),
+      37.75% calc(var(--sand-edge-height) - 12px),
+      39% calc(var(--sand-edge-height) - 12px),
+      40.25% calc(var(--sand-edge-height) - 16px),
+      41.5% calc(var(--sand-edge-height) - 20px),
+      42.75% calc(var(--sand-edge-height) - 24px),
+      44% calc(var(--sand-edge-height) - 26px),
+      45.25% calc(var(--sand-edge-height) - 22px),
+      46.5% calc(var(--sand-edge-height) - 18px),
+      47.75% calc(var(--sand-edge-height) - 14px),
+      49% calc(var(--sand-edge-height) - 14px),
+      50.25% calc(var(--sand-edge-height) - 18px),
+      51.5% calc(var(--sand-edge-height) - 22px),
+      52.75% calc(var(--sand-edge-height) - 26px),
+      54% calc(var(--sand-edge-height) - 28px),
+      55.25% calc(var(--sand-edge-height) - 24px),
+      56.5% calc(var(--sand-edge-height) - 20px),
+      57.75% calc(var(--sand-edge-height) - 16px),
+      59% calc(var(--sand-edge-height) - 16px),
+      60.25% calc(var(--sand-edge-height) - 18px),
+      61.5% calc(var(--sand-edge-height) - 20px),
+      62.75% calc(var(--sand-edge-height) - 22px),
+      64% calc(var(--sand-edge-height) - 24px),
+      65.25% calc(var(--sand-edge-height) - 20px),
+      66.5% calc(var(--sand-edge-height) - 16px),
+      67.75% calc(var(--sand-edge-height) - 12px),
+      69% calc(var(--sand-edge-height) - 10px),
+      70.25% calc(var(--sand-edge-height) - 14px),
+      71.5% calc(var(--sand-edge-height) - 18px),
+      72.75% calc(var(--sand-edge-height) - 22px),
+      74% calc(var(--sand-edge-height) - 22px),
+      75.25% calc(var(--sand-edge-height) - 18px),
+      76.5% calc(var(--sand-edge-height) - 14px),
+      77.75% calc(var(--sand-edge-height) - 10px),
+      79% calc(var(--sand-edge-height) - 8px),
+      80.25% calc(var(--sand-edge-height) - 12px),
+      81.5% calc(var(--sand-edge-height) - 16px),
+      82.75% calc(var(--sand-edge-height) - 20px),
+      84% calc(var(--sand-edge-height) - 20px),
+      85.25% calc(var(--sand-edge-height) - 16px),
+      86.5% calc(var(--sand-edge-height) - 12px),
+      87.75% calc(var(--sand-edge-height) - 12px),
+      89% calc(var(--sand-edge-height) - 12px),
+      90.25% calc(var(--sand-edge-height) - 16px),
+      91.5% calc(var(--sand-edge-height) - 20px),
+      92.75% calc(var(--sand-edge-height) - 18px),
+      94% calc(var(--sand-edge-height) - 18px),
+      95.5% calc(var(--sand-edge-height) - 14px),
+      97% calc(var(--sand-edge-height) - 10px),
+      98.5% calc(var(--sand-edge-height) - 8px),
+      100% calc(var(--sand-edge-height) - 6px),
+      100% 100%,
+      0 100%
+    );
 
     &::before,
     &::after {
