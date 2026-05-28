@@ -1,6 +1,7 @@
 @use './styles/fonts';
 @use './styles/tokens';
 @use './styles/animations';
+@use './styles/cloud';
 
 :root {
   font-family: var(--font-body);

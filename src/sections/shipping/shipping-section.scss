@@ -15,20 +15,41 @@
   }
 
   &__banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    min-height: 52px;
+    padding: 0.35rem 0.75rem 0.2rem;
+    pointer-events: auto;
+  }
+
+  &__cloud {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+    --cloud-scale: 0.68;
+    pointer-events: none;
+
+    .cloud__drift {
+      animation: none;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     gap: 0.35rem;
     margin: 0;
-    background: var(--white);
-    border: 1.5px solid var(--pink-light);
-    border-radius: 999px;
-    padding: 0.2rem 0.5rem;
     font-size: 0.55rem;
     color: var(--pink-primary);
     font-family: var(--font-body);
     max-width: 140px;
     line-height: 1.2;
-    pointer-events: auto;
+    text-align: center;
   }
 
   &__icon {
@@ -62,9 +83,18 @@
 
   @media (min-width: 768px) {
     &__banner {
+      min-width: 180px;
+      min-height: 58px;
+      padding: 0.4rem 0.9rem 0.25rem;
+    }
+
+    &__cloud {
+      --cloud-scale: 0.78;
+    }
+
+    &__content {
       max-width: 180px;
       font-size: 0.6rem;
-      padding: 0.25rem 0.65rem;
     }
   }
 }
