@@ -8,15 +8,6 @@ function SiteHeader() {
   return (
     <header className="site-header">
       <div className="site-header__bar">
-        <button type="button" className="site-header__search" aria-label="Search">
-          <span className="site-header__search-icon" aria-hidden="true" />
-        </button>
-
-        <Link to="/" className="site-header__logo">
-          <span className="site-header__logo-magical">Magical</span>
-          <span className="site-header__logo-minis">Minis</span>
-        </Link>
-
         <button
           type="button"
           className="site-header__menu-btn"
@@ -29,6 +20,15 @@ function SiteHeader() {
             <span className={`site-header__menu-line ${isMenuOpen ? 'site-header__menu-line--open' : ''}`} />
             <span className={`site-header__menu-line ${isMenuOpen ? 'site-header__menu-line--open' : ''}`} />
           </span>
+        </button>
+
+        <Link to="/" className="site-header__logo">
+          <span className="site-header__logo-magical">Magical</span>
+          <span className="site-header__logo-minis">Minis</span>
+        </Link>
+
+        <button type="button" className="site-header__cart" aria-label="Cart">
+          <span className="site-header__cart-icon" aria-hidden="true" />
         </button>
       </div>
     </header>

@@ -21,22 +21,31 @@
     width: 100%;
   }
 
-  &__search {
-    grid-column: 1;
+  &__cart {
+    grid-column: 3;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.25rem;
-    justify-self: start;
+    padding: 0;
+
+    @media (min-width: 768px) {
+      margin-right: 1.5rem;
+    }
   }
 
-  &__search-icon {
+  &__cart-icon {
     display: block;
     width: 2rem;
     height: 2rem;
     background-color: var(--pink-primary);
-    mask: url('../../assets/search-solid.svg') no-repeat center / 115% 115%;
-    -webkit-mask: url('../../assets/search-solid.svg') no-repeat center / 115% 115%;
+    mask: url('../../assets/shopping-bag-solid.svg') no-repeat center / contain;
+    -webkit-mask: url('../../assets/shopping-bag-solid.svg') no-repeat center / contain;
   }
 
   &__logo {
@@ -65,8 +74,8 @@
   }
 
   &__menu-btn {
-    grid-column: 3;
-    justify-self: end;
+    grid-column: 1;
+    justify-self: start;
     background: none;
     border: none;
     cursor: pointer;
@@ -76,6 +85,10 @@
     width: 32px;
     height: 32px;
     padding: 0;
+
+    @media (min-width: 768px) {
+      margin-left: 1.5rem;
+    }
   }
 
   &__menu-icon {
@@ -83,7 +96,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 26px;
-    height: 22px;
+    height: 18px;
   }
 
   &__menu-line {
@@ -96,7 +109,7 @@
 
     &--open {
       &:nth-child(1) {
-        transform: rotate(45deg) translate(7px, 7px);
+        transform: rotate(45deg) translate(6px, 6px);
       }
 
       &:nth-child(2) {
@@ -104,7 +117,7 @@
       }
 
       &:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -7px);
+        transform: rotate(-45deg) translate(6px, -6px);
       }
     }
   }
